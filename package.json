@@ -1,4 +1,8 @@
 {
+  "name": "doom-reddit-patches",
+  "version": "0.0.0-semantically-released",
+  "private": true,
+  "description": "Doom's Morphe patches for Reddit. Releases are versioned by semantic-release; this version field is never bumped.",
   "devDependencies": {
     "@cleyrop-org/semantic-release-backmerge": "^6.2.0",
     "@MorpheApp/changelog": "git+https://github.com/MorpheApp/changelog.git#bundle",
