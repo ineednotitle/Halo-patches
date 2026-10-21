@@ -4,10 +4,10 @@ patches {
     about {
         name = "Doom's Reddit Patches"
         description = "New mask, same task. Doom's patches for the Reddit app."
-        source = "https://github.com/YOUR_USERNAME/doom-reddit-patches"
-        author = "YOUR_USERNAME"
-        contact = "https://github.com/YOUR_USERNAME"
-        website = "https://morphe.software/add-source?github=YOUR_USERNAME/doom-reddit-patches"
+        source = "https://github.com/ineednotitle/doom-reddit-patches"
+        author = "ineednotitle"
+        contact = "https://github.com/ineednotitle"
+        website = "https://morphe.software/add-source?github=ineednotitle/doom-reddit-patches"
         license = "GPLv3"
     }
 }
