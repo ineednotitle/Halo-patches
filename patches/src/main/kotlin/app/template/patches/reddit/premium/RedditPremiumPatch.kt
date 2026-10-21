@@ -8,7 +8,7 @@ import app.template.patches.shared.Constants.REDDIT_COMPATIBILITY
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.WideRangeInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
@@ -99,7 +99,7 @@ val redditUnlockPremiumPatch = bytecodePatch(
                 return@forEachIndexed
             }
 
-            val range = instruction as? WideRangeInstruction
+            val range = instruction as? RegisterRangeInstruction
                 ?: throw PatchException("Unlock Premium: Account <init> invoke is not /range form")
 
             val parameterTypes = reference.parameterTypes.map { it.toString() }
@@ -161,12 +161,20 @@ private fun MutableMethod.parseJsonKeyOrder(): List<String> {
             }
 
             instruction.opcode == Opcode.FILLED_NEW_ARRAY -> {
-                val regs = (instruction as? Instruction35c)?.registers?.toList().orEmpty()
+                val regs = (instruction as? Instruction35c)?.let { instr ->
+                    buildList {
+                        add(instr.registerC)
+                        if (instr.registerCount >= 2) add(instr.registerD)
+                        if (instr.registerCount >= 3) add(instr.registerE)
+                        if (instr.registerCount >= 4) add(instr.registerF)
+                        if (instr.registerCount >= 5) add(instr.registerG)
+                    }
+                }.orEmpty()
                 if (regs.size > 3) filledArrayRegisters = regs
             }
 
             instruction.opcode == Opcode.FILLED_NEW_ARRAY_RANGE -> {
-                val range = instruction as? WideRangeInstruction
+                val range = instruction as? RegisterRangeInstruction
                 if (range != null && range.registerCount > 3) {
                     filledArrayRegisters =
                         (range.startRegister until range.startRegister + range.registerCount).toList()
