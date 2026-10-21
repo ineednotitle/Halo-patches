@@ -11,11 +11,22 @@ See [ANALYSIS.md](ANALYSIS.md) for the full teardown of Doom's method.
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
+> **[v1.0.1-dev.1](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.0.1-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
+<details open>
+<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
 
-| Patch | What it does |
-|---|---|
-| **Remove ads** | Filters promoted posts out of feed list surfaces and kills banner ads (and their placeholders) in comment threads. Anchors verified on **2026.42.0** — see [VERIFICATION_2026.42.0.md](VERIFICATION_2026.42.0.md). |
-| **Unlock Premium** | Data-source surgery in `AccountJsonAdapter.fromJson`: pins `is_gold`, `has_gold_subscription`, `has_premium_avatar_treatment` to true at both Account construction sites (registers computed at patch time from the Moshi options table — no hardcoded offsets). Premium app surface unlocked; server-validated perks (r/lounge, coins) cannot be unlocked by any local patch. **Verified on 2026.42.0.** |
+**🎯 Supported versions:**
+
+| 🧪&nbsp;2026.42.0 | 🧪&nbsp;2026.41.0 | 🧪&nbsp;2026.40.0 | 🧪&nbsp;2026.39.0 | 2026.24.0 | 2026.10.0 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Remove ads](#remove-ads) | Hides promoted posts in feeds and banner ads in comment threads. |  |
+| [Unlock Premium](#unlock-premium) | Flips the local isGold/has_gold_subscription account flags at the JSON adapter to enable Reddit Premium UI (custom icons, premium screens). Server-side perks cannot be unlocked. |  |
+
+</details>
 
 <!-- PATCHES_END -->
 
