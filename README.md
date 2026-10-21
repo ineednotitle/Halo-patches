@@ -10,10 +10,14 @@ See [ANALYSIS.md](ANALYSIS.md) for the full teardown of Doom's method.
 
 ## 🧩 Patches
 
+<!-- PATCHES_START -->
+
 | Patch | What it does |
 |---|---|
 | **Remove ads** | Filters promoted posts out of feed list surfaces and kills banner ads (and their placeholders) in comment threads. Anchors verified on **2026.42.0** — see [VERIFICATION_2026.42.0.md](VERIFICATION_2026.42.0.md). |
 | **Unlock Premium** | Data-source surgery in `AccountJsonAdapter.fromJson`: pins `is_gold`, `has_gold_subscription`, `has_premium_avatar_treatment` to true at both Account construction sites (registers computed at patch time from the Moshi options table — no hardcoded offsets). Premium app surface unlocked; server-validated perks (r/lounge, coins) cannot be unlocked by any local patch. **Verified on 2026.42.0.** |
+
+<!-- PATCHES_END -->
 
 ## 🔨 Build (the Doom pipeline)
 
