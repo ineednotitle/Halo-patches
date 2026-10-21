@@ -29,7 +29,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
  *
  * ── How to re-verify after a Reddit update ─────────────────────────────────
  *   apktool d reddit.apkm
- *   grep -rln '"is_gold"' smali*/ | grep -i adapter
+ *   grep -rln '"is_gold"' smali* / | grep -i adapter
  *   → find the AccountJsonAdapter class, confirm fromJson still builds
  *     Lcom/reddit/domain/model/Account; via invoke-direct …<init>(…).
  *   The patch re-derives param positions from the JSON options table at patch

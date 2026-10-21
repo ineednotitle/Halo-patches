@@ -32,9 +32,9 @@ import com.android.tools.smali.dexlib2.Opcode
  *   after a fresh dump review.
  *
  * ── How to re-verify after a Reddit update (apktool d reddit.apkm) ──────────
- *  1. smali*/com/reddit/domain/model/listing/Listing.smali → same 3 field writes
- *  2. grep -rl '"CommentsAdState(conversationAdViewState="' smali*/
- *  3. smali*/com/reddit/comments/presentation/CommentsViewModel.smali
+ *  1. smali* /com/reddit/domain/model/listing/Listing.smali → same 3 field writes
+ *  2. grep -rl '"CommentsAdState(conversationAdViewState="' smali* /
+ *  3. smali* /com/reddit/comments/presentation/CommentsViewModel.smali
  *     → public final V-method (Z, L..., I) new'ing an ad loader via <init>(ZI)V
  * ──────────────────────────────────────────────────────────────────────────
  */
