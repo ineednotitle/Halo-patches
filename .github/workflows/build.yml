@@ -1,0 +1,39 @@
+name: Build patch bundle (.mpp)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build .mpp
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Java
+        uses: actions/setup-java@v5.7.0
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Build Android patch bundle
+        run: ./gradlew buildAndroid --stacktrace
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload .mpp artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: patches-mpp
+          path: patches/build/libs/*.mpp
+          if-no-files-found: error
