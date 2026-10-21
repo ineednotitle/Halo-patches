@@ -130,7 +130,7 @@ val redditUnlockPremiumPatch = bytecodePatch(
         // ── Step 3: apply from the END so earlier indices stay valid ─────────
         plannedInjections
             .sortedByDescending { it.first }
-            .forEach { (index, smali) -> addInstructions(index, smali) }
+            .forEach { (index, smali) -> fromJsonMethod.addInstructions(index, smali) }
 
         println("Unlock Premium: patched ${plannedInjections.size} Account construction site(s).")
     }
