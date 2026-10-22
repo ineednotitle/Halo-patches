@@ -11,7 +11,7 @@ See [ANALYSIS.md](ANALYSIS.md) for the full teardown of Doom's method.
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.0.3](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.0.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
+> **[v1.0.4](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.0.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
 <details open>
 <summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>

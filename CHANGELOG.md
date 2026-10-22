@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.3...v1.0.4) (2026-10-22)
+
+### 🐛 Bug Fixes
+
+* build against app.morphe.patches plugin 2.0.0 (Patcher 2.0 ABI) ([585b0a1](https://github.com/ineednotitle/doom-reddit-patches/commit/585b0a183f502e12f92150b06119ecd45aea9126))
+* compile against patcher API 2.0.0, not 1.8.0 ([3a5c622](https://github.com/ineednotitle/doom-reddit-patches/commit/3a5c6220d93969b6a603154e719749e849a2a8ac))
+* vendor util.PatchListGenerator (moved from the plugin into template source) ([a0b1998](https://github.com/ineednotitle/doom-reddit-patches/commit/a0b199864d8ef11d5889c3c642f914498fe26bb4))
+
 ## [1.0.3](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.2...v1.0.3) (2026-10-22)
 
 ### 🐛 Bug Fixes

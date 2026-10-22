@@ -1,12 +1,12 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "patches": [
     {
       "name": "Remove ads",
       "description": "Hides promoted posts in feeds and banner ads in comment threads.",
       "default": true,
-      "dependencies": [],
+      "category": null,
       "compatiblePackages": [
         {
           "packageName": "com.reddit.frontpage",
@@ -17,6 +17,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -69,7 +70,7 @@
       "name": "Unlock Premium",
       "description": "Flips the local isGold/has_gold_subscription account flags at the JSON adapter to enable Reddit Premium UI (custom icons, premium screens). Server-side perks cannot be unlocked.",
       "default": true,
-      "dependencies": [],
+      "category": null,
       "compatiblePackages": [
         {
           "packageName": "com.reddit.frontpage",
@@ -80,6 +81,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
