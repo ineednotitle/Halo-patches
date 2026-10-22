@@ -1,8 +1,10 @@
 package app.template.patches.reddit.premium
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 /**
  * Targets AccountJsonAdapter.fromJson(JsonReader) — the Moshi deserialization
@@ -38,11 +40,10 @@ import com.android.tools.smali.dexlib2.AccessFlags
  * ──────────────────────────────────────────────────────────────────────────
  */
 object AccountFromJsonFingerprint : Fingerprint(
-    // Class-pinned: the premium JSON keys also appear as const-strings in
-    // Account.<init> and AccountDataModel.<init>, so an unpinned fingerprint
-    // matches 3+ methods and fails resolution. The adapter class name is
-    // stable across builds (verified 2026.42.0, smali_classes4).
-    definingClass = "Lcom/reddit/domain/model/AccountJsonAdapter;",
+    // No definingClass pin: the legacy field is unreliable under Patcher
+    // 2.0.0-dev builds, and this fingerprint needs none — the three premium
+    // JSON keys appear (in classes4) in AccountJsonAdapter ONLY, so
+    // name + Object return + one reference param + the strings is unique.
     name = "fromJson",
     returnType = "Ljava/lang/Object;",
     parameters = listOf("L"),
@@ -60,15 +61,20 @@ object AccountFromJsonFingerprint : Fingerprint(
  * boolean at the Account construction sites inside fromJson.
  */
 object AccountJsonAdapterConstructorFingerprint : Fingerprint(
-    // See note above — without the class pin this matches Account.<init> and
-    // AccountDataModel.<init> as well (both start with Ljava/lang/String; and
-    // embed the JSON key strings) → "fingerprint matched multiple methods".
-    definingClass = "Lcom/reddit/domain/model/AccountJsonAdapter;",
+    // Without extra constraints this also matches Account.<init> and
+    // AccountDataModel.<init> (in classes6: first param is a String and both
+    // embed is_gold/has_gold_subscription via Moshi OptionalJsonProperty
+    // marker strings) → "fingerprint matched multiple methods" (v1.0.1 bug).
+    // The structural discriminator: only the ADAPTER constructor packs the
+    // key array into JsonReader.Options (filled-new-array/range); the data
+    // class constructors merely assign params and contain no array fill.
+    // Avoids definingClass, which Patcher 2.0.0-dev builds handle badly.
     name = "<init>",
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
         string("is_gold"),
-        string("has_gold_subscription")
+        string("has_gold_subscription"),
+        opcode(Opcode.FILLED_NEW_ARRAY_RANGE)
     )
 )
