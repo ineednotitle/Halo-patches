@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.2...v1.0.3) (2026-10-22)
+
+### 🐛 Bug Fixes
+
+* disambiguate adapter ctor by options-array fill, drop definingClass pins ([52af0e8](https://github.com/ineednotitle/doom-reddit-patches/commit/52af0e8fb0f9292d471ff2c80d50e8aad17f67b6))
+
 ## [1.0.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.1...v1.0.2) (2026-10-22)
 
 ### 🐛 Bug Fixes

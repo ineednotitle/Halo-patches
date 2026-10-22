@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-22T15:20:43",
-  "description": "## [1.0.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.1...v1.0.2) (2026-10-22)\n\n### 🐛 Bug Fixes\n\n* pin premium fingerprints to AccountJsonAdapter and skip non-boolean params ([c9d73d8](https://github.com/ineednotitle/doom-reddit-patches/commit/c9d73d886924c789b868f31e399b7c0c78cb3264)), closes [12/#14](https://github.com/12/doom-reddit-patches/issues/14)",
-  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.0.2/patches-1.0.2.mpp",
+  "created_at": "2026-10-22T16:18:31",
+  "description": "## [1.0.3](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.2...v1.0.3) (2026-10-22)\n\n### 🐛 Bug Fixes\n\n* disambiguate adapter ctor by options-array fill, drop definingClass pins ([52af0e8](https://github.com/ineednotitle/doom-reddit-patches/commit/52af0e8fb0f9292d471ff2c80d50e8aad17f67b6))",
+  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.0.3/patches-1.0.3.mpp",
   "signature_download_url": "",
-  "version": "1.0.2"
+  "version": "1.0.3"
 }
