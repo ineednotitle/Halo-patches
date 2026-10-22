@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.1...v1.0.2) (2026-10-22)
+
+### 🐛 Bug Fixes
+
+* pin premium fingerprints to AccountJsonAdapter and skip non-boolean params ([c9d73d8](https://github.com/ineednotitle/doom-reddit-patches/commit/c9d73d886924c789b868f31e399b7c0c78cb3264)), closes [12/#14](https://github.com/12/doom-reddit-patches/issues/14)
+
 ## [1.0.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.0...v1.0.1) (2026-10-21)
 
 ### 🐛 Bug Fixes
