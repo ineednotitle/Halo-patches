@@ -38,6 +38,11 @@ import com.android.tools.smali.dexlib2.AccessFlags
  * ──────────────────────────────────────────────────────────────────────────
  */
 object AccountFromJsonFingerprint : Fingerprint(
+    // Class-pinned: the premium JSON keys also appear as const-strings in
+    // Account.<init> and AccountDataModel.<init>, so an unpinned fingerprint
+    // matches 3+ methods and fails resolution. The adapter class name is
+    // stable across builds (verified 2026.42.0, smali_classes4).
+    definingClass = "Lcom/reddit/domain/model/AccountJsonAdapter;",
     name = "fromJson",
     returnType = "Ljava/lang/Object;",
     parameters = listOf("L"),
@@ -55,6 +60,10 @@ object AccountFromJsonFingerprint : Fingerprint(
  * boolean at the Account construction sites inside fromJson.
  */
 object AccountJsonAdapterConstructorFingerprint : Fingerprint(
+    // See note above — without the class pin this matches Account.<init> and
+    // AccountDataModel.<init> as well (both start with Ljava/lang/String; and
+    // embed the JSON key strings) → "fingerprint matched multiple methods".
+    definingClass = "Lcom/reddit/domain/model/AccountJsonAdapter;",
     name = "<init>",
     returnType = "V",
     parameters = listOf("L"),

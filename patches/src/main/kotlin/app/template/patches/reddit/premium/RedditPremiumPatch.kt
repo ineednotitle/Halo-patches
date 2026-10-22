@@ -84,10 +84,16 @@ val redditUnlockPremiumPatch = bytecodePatch(
         println("Unlock Premium: options-order premium param indices → $premiumParams")
 
         // ── Step 2: locate Account construction sites + plan injections ──────
+        // 2026.42.0 note: hasPremium (idx 11) is a real boolean, but
+        // has_gold_subscription (idx 12) and has_premium_avatar_treatment
+        // (idx 14) became Ljava/lang/Long; in this build. Injecting const/4
+        // into a Long's low register half would trip the ART verifier
+        // (type conflict) → runtime crash. Only true `Z` params are flipped.
         val instructions = fromJsonMethod.implementation?.instructions?.toList()
             ?: throw PatchException("Unlock Premium: fromJson has no body")
 
         val plannedInjections = mutableListOf<Pair<Int, String>>() // index → smali
+        val skippedParams = mutableListOf<String>()
 
         instructions.forEachIndexed { index, instruction ->
             if (instruction.opcode != Opcode.INVOKE_DIRECT_RANGE) {
@@ -106,6 +112,11 @@ val redditUnlockPremiumPatch = bytecodePatch(
             val injection = buildString {
                 premiumParams.forEach { paramIndex ->
                     if (paramIndex >= parameterTypes.size) return@forEach
+                    val paramType = parameterTypes[paramIndex]
+                    if (paramType != "Z") {
+                        skippedParams.add("param #$paramIndex ($paramType)")
+                        return@forEach
+                    }
                     var reg = range.startRegister + 1 // +1 = 'this'
                     for (i in 0 until paramIndex) {
                         reg += if (parameterTypes[i] == "J" || parameterTypes[i] == "D") 2 else 1
@@ -133,6 +144,12 @@ val redditUnlockPremiumPatch = bytecodePatch(
             .forEach { (index, smali) -> fromJsonMethod.addInstructions(index, smali) }
 
         println("Unlock Premium: patched ${plannedInjections.size} Account construction site(s).")
+        if (skippedParams.isNotEmpty()) {
+            println(
+                "Unlock Premium: skipped non-boolean params: ${skippedParams.distinct()} " +
+                    "(Long-typed premium fields in this build — left untouched by design)."
+            )
+        }
     }
 }
 
