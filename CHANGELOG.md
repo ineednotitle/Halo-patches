@@ -1,3 +1,14 @@
+## [1.1.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.6...v1.1.0) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* close patches{} block and keep our group id in the imported build file ([7fc47de](https://github.com/ineednotitle/doom-reddit-patches/commit/7fc47de52a93618797a4e50b1919884c895b468c))
+* nest REDDIT_COMPATIBILITY inside the imported object Constants ([101617e](https://github.com/ineednotitle/doom-reddit-patches/commit/101617e627a640ebe1117732ebb63f9cda47d9b7))
+
+### ✨ New Features
+
+* import the full Doom/Morphe patch suite (220 apps) from rushiranpise/morphe-patches ([f5bfe52](https://github.com/ineednotitle/doom-reddit-patches/commit/f5bfe52082fa9692494472ca369efa021abf4256))
+
 ## [1.0.6](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.5...v1.0.6) (2026-10-23)
 
 ### 🐛 Bug Fixes
