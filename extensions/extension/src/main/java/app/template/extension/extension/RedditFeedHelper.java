@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -26,9 +27,17 @@ public final class RedditFeedHelper {
 
     /**
      * Per-class cache of the no-arg boolean "promoted" accessor.
-     * Null value = the class has no promoted flag (regular content).
+     * Optional.empty means the class has no promoted flag (regular content).
+     * NOTE: ConcurrentHashMap cannot store null values — the previous revision
+     * threw NullPointerException on cache.put(cls, null) for any row class
+     * without a promoted getter, then re-threw two NoSuchMethodExceptions
+     * (each with stack-fill overhead) on every subsequent frame. Optional
+     * storage makes the warmed path exception-free for all row shapes.
      */
-    private static final Map<Class<?>, Method> PROMOTED_GETTER_CACHE = new ConcurrentHashMap<>();
+    private static final Map<Class<?>, Optional<Method>> PROMOTED_GETTER_CACHE =
+            new ConcurrentHashMap<>();
+
+    private static final String[] PROMOTED_GETTER_NAMES = { "getPromoted", "isPromoted" };
 
     private RedditFeedHelper() {
         // Static injection surface only.
@@ -99,17 +108,14 @@ public final class RedditFeedHelper {
         }
 
         Class<?> cls = item.getClass();
-        Method getter = PROMOTED_GETTER_CACHE.get(cls);
-        if (getter == null && !PROMOTED_GETTER_CACHE.containsKey(cls)) {
-            getter = findPromotedGetter(cls);
-            PROMOTED_GETTER_CACHE.put(cls, getter); // may store null: no promoted flag
-        }
-        if (getter == null) {
+        Optional<Method> getter = PROMOTED_GETTER_CACHE
+                .computeIfAbsent(cls, RedditFeedHelper::findPromotedGetter);
+        if (!getter.isPresent()) {
             return false;
         }
 
         try {
-            Object result = getter.invoke(item);
+            Object result = getter.get().invoke(item);
             return Boolean.TRUE.equals(result);
         } catch (Throwable ignored) {
             // Item shape drifted (new Reddit build): treat as regular content
@@ -118,19 +124,19 @@ public final class RedditFeedHelper {
         }
     }
 
-    private static Method findPromotedGetter(Class<?> cls) {
-        for (String name : new String[]{"getPromoted", "isPromoted"}) {
+    private static Optional<Method> findPromotedGetter(Class<?> cls) {
+        for (String name : PROMOTED_GETTER_NAMES) {
             try {
                 Method m = cls.getMethod(name);
                 if (m.getParameterCount() == 0 &&
                         (m.getReturnType() == boolean.class || m.getReturnType() == Boolean.class)) {
                     m.setAccessible(true);
-                    return m;
+                    return Optional.of(m);
                 }
             } catch (NoSuchMethodException ignored) {
                 // Try next spelling.
             }
         }
-        return null;
+        return Optional.empty();
     }
 }
