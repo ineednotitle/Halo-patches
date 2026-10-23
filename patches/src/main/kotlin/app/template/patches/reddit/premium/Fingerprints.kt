@@ -33,7 +33,11 @@ object AccountFromJsonFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/domain/model/AccountJsonAdapter;",
     name = "fromJson",
     returnType = "Ljava/lang/Object;",
-    parameters = listOf("Lcom/squareup/moshi/e;"),
+    // "L" = any reference type (STARTS_WITH). The Moshi JsonReader class is
+    // obfuscated per build (e; on 2026.42.0 / vc 2642020), so exact types would
+    // match only one build. Binding-safe: list content does not affect which
+    // Fingerprint ctor overload the compiler picks.
+    parameters = listOf("L"),
     accessFlags = listOf(AccessFlags.PUBLIC)
 )
 
@@ -49,6 +53,8 @@ object AccountJsonAdapterConstructorFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/domain/model/AccountJsonAdapter;",
     name = "<init>",
     returnType = "V",
-    parameters = listOf("Lcom/squareup/moshi/j;"),
+    // Same: single Moshi JsonFactory param, obfuscated per build
+    // (j; on 2026.42.0). Unique within the adapter regardless.
+    parameters = listOf("L"),
     accessFlags = listOf(AccessFlags.PUBLIC)
 )
