@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.6...v1.3.0) (2026-10-23)
+
+### ✨ New Features
+
+* District by Zomato 2.76.0 — block analytics & data collection, block location tracking ([4c0d139](https://github.com/ineednotitle/doom-reddit-patches/commit/4c0d13936b7208c92adb2ea2b733816fdf9430a3))
+
 ## [1.2.6](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.5...v1.2.6) (2026-10-23)
 
 ### 🐛 Bug Fixes

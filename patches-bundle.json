@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-23T13:54:19",
-  "description": "## [1.2.6](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.5...v1.2.6) (2026-10-23)\n\n### 🐛 Bug Fixes\n\n* **perf:** remove dead hideNewPostAds entry point from extension ([ab792a8](https://github.com/ineednotitle/doom-reddit-patches/commit/ab792a8b5b9d507cb7b89faf42ce6c78d470c9a6))",
-  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.2.6/patches-1.2.6.mpp",
+  "created_at": "2026-10-23T17:45:32",
+  "description": "## [1.3.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.6...v1.3.0) (2026-10-23)\n\n### ✨ New Features\n\n* District by Zomato 2.76.0 — block analytics & data collection, block location tracking ([4c0d139](https://github.com/ineednotitle/doom-reddit-patches/commit/4c0d13936b7208c92adb2ea2b733816fdf9430a3))",
+  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.3.0/patches-1.3.0.mpp",
   "signature_download_url": "",
-  "version": "1.2.6"
+  "version": "1.3.0"
 }

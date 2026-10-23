@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.6",
+  "version": "1.3.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -350,6 +350,62 @@
               },
               "isExperimental": false,
               "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block analytics & data collection",
+      "description": "Neutralizes Firebase Analytics, AppsFlyer, CleverTap event fan-out and the in-house crash-report enqueue of District by Zomato.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.application.zomato.district",
+          "name": "District",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#E23744",
+          "signatures": [
+            "a81d49ec84db1b0a939cb49d5464071ea1ff66d6c44999359986d0dbde0a6011"
+          ],
+          "targets": [
+            {
+              "version": "2.76.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block location tracking",
+      "description": "Stops District by Zomato from acquiring GPS fixes (continuous updates + one-shot fetch). Manual city selection still works.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.application.zomato.district",
+          "name": "District",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#E23744",
+          "signatures": [
+            "a81d49ec84db1b0a939cb49d5464071ea1ff66d6c44999359986d0dbde0a6011"
+          ],
+          "targets": [
+            {
+              "version": "2.76.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
               "description": null
             }
           ]

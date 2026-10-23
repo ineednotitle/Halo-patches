@@ -55,7 +55,7 @@ before an update.
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.2.6](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.2.6)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;322 patches total
+> **[v1.3.0](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.3.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;324 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -202,6 +202,22 @@ before an update.
 | [Unlock Premium](#unlock-premium) | Unlocks Telegram Premium features for the current account. |  |
 | [Use normal paste](#use-normal-paste) | Skips Telegram's Rich HTML paste handler and falls back to the normal paste path. |  |
 | [Voice to music](#voice-to-music) | Plays voice notes in the full music player with seek bar and background playback. |  |
+
+</details>
+
+<details>
+<summary>📦 District&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 🧪&nbsp;2.76.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Block analytics & data collection](#block-analytics-data-collection) | Neutralizes Firebase Analytics, AppsFlyer, CleverTap event fan-out and the in-house crash-report enqueue of District by Zomato. |  |
+| [Block location tracking](#block-location-tracking) | Stops District by Zomato from acquiring GPS fixes (continuous updates + one-shot fetch). Manual city selection still works. |  |
 
 </details>
 
