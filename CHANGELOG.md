@@ -1,3 +1,9 @@
+## [1.2.5](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.4...v1.2.5) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* **perf:** null-safe reflection cache in RedditFeedHelper + performance audit ([bb6ca9d](https://github.com/ineednotitle/doom-reddit-patches/commit/bb6ca9d74b5c6bedc4ad854cd18e7f51eb610b08))
+
 ## [1.2.4](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.3...v1.2.4) (2026-10-23)
 
 ### 🐛 Bug Fixes

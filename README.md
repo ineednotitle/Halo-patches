@@ -36,7 +36,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.2.4](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.2.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;322 patches total
+> **[v1.2.5](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.2.5)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;322 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
