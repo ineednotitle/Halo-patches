@@ -1,3 +1,9 @@
+## [1.2.6](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.5...v1.2.6) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* **perf:** remove dead hideNewPostAds entry point from extension ([ab792a8](https://github.com/ineednotitle/doom-reddit-patches/commit/ab792a8b5b9d507cb7b89faf42ce6c78d470c9a6))
+
 ## [1.2.5](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.4...v1.2.5) (2026-10-23)
 
 ### 🐛 Bug Fixes

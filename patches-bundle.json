@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-23T13:40:33",
-  "description": "## [1.2.5](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.4...v1.2.5) (2026-10-23)\n\n### 🐛 Bug Fixes\n\n* **perf:** null-safe reflection cache in RedditFeedHelper + performance audit ([bb6ca9d](https://github.com/ineednotitle/doom-reddit-patches/commit/bb6ca9d74b5c6bedc4ad854cd18e7f51eb610b08))",
-  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.2.5/patches-1.2.5.mpp",
+  "created_at": "2026-10-23T13:54:19",
+  "description": "## [1.2.6](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.5...v1.2.6) (2026-10-23)\n\n### 🐛 Bug Fixes\n\n* **perf:** remove dead hideNewPostAds entry point from extension ([ab792a8](https://github.com/ineednotitle/doom-reddit-patches/commit/ab792a8b5b9d507cb7b89faf42ce6c78d470c9a6))",
+  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.2.6/patches-1.2.6.mpp",
   "signature_download_url": "",
-  "version": "1.2.5"
+  "version": "1.2.6"
 }
