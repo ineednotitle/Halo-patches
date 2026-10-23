@@ -1,3 +1,9 @@
+## [1.3.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.3.0...v1.3.1) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* **district:** CleverTap profile-push fingerprint anchored to a phantom const ([5bf88d8](https://github.com/ineednotitle/doom-reddit-patches/commit/5bf88d880890e135c9908536e38ae0244bfcc94d))
+
 ## [1.3.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.6...v1.3.0) (2026-10-23)
 
 ### ✨ New Features
