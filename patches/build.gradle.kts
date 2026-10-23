@@ -1,4 +1,4 @@
-group = "app.rushiranpise.morphe-patches"
+group = "app.doom.reddit-patches"
 
 patches {
     about {
@@ -10,7 +10,7 @@ patches {
         website = "https://morphe.software/add-source?github=ineednotitle/doom-reddit-patches"
         license = "GPLv3"
     }
-
+}
 
 kotlin {
     compilerOptions {
