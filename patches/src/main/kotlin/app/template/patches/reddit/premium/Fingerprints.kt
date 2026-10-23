@@ -52,9 +52,10 @@ object AccountFromJsonFingerprint : Fingerprint(
 object AccountJsonAdapterConstructorFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/domain/model/AccountJsonAdapter;",
     name = "<init>",
-    returnType = "V",
-    // Same: single Moshi JsonFactory param, obfuscated per build
-    // (j; on 2026.42.0). Unique within the adapter regardless.
+    // Upstream-proven constructor style: name + parameters ONLY (no returnType,
+    // no accessFlags — both break constructor matching in Patcher 2.0.0).
+    // Single Moshi JsonFactory param, obfuscated per build (j; on 2026.42.0) →
+    // partial "L". The adapter class has exactly one constructor, so class
+    // scope + one ref-param uniquely identifies it on every build.
     parameters = listOf("L"),
-    accessFlags = listOf(AccessFlags.PUBLIC)
 )
