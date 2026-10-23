@@ -142,6 +142,47 @@ val redditRemoveAdsPatch = bytecodePatch(
                 }
             }
         } ?: println("Remove ads: CommentsAdState not found (pre-2026.04 APK?), skipping layer 4.")
+
+        // ── Layer 5: adaptive-feed AdPostSection ad units (Reddit 2026.42.x) ─
+        // 2026.42.0 no longer serves feed ads through Listing children/ILink —
+        // sponsored units are AdPostSection composables
+        // (class whose toString begins "AdPostSection(linkId="). Upstream's
+        // p5 sections-list filter cannot be used: in this build p5 is an
+        // Lvwp; media model, NOT a List (injecting there would VerifyError).
+        // Instead: resolve the section's render composables by signature
+        // (obfuscation-proof — names change per build) and no-op them with a
+        // framework-safe early return-void. Kills rendering AND ad-impression
+        // callbacks inside, without touching any data model.
+        runCatching {
+            val adSectionClassDef = AdPostSectionToStringFingerprint.originalClassDef
+
+            fun renderName(pred: (List<String>) -> Boolean): String =
+                adSectionClassDef.methods.firstOrNull { m ->
+                    m.returnType == "V" &&
+                        AccessFlags.PUBLIC.isSet(m.accessFlags) &&
+                        AccessFlags.FINAL.isSet(m.accessFlags) &&
+                        pred(m.parameterTypes.map { it.toString() })
+                }?.name
+                    ?: throw PatchException("Remove ads: AdPostSection render signature not found")
+
+            listOf<(List<String>) -> Boolean>(
+                // c(Ls4j; Lgbc; I)V  — compact layout (~2.3k smali on 2026.42.0)
+                { t -> t.size == 3 && t[0].startsWith("L") && t[1].startsWith("L") && t[2] == "I" },
+                // e(L…; Function0; L…; L…; Ls4j; Lwpy; Lawx; Function0; Lgbc; I)V — full layout
+                { t -> t.size == 10 && t.count { it == "Lkotlin/jvm/functions/Function0;" } == 2 },
+            ).forEach { pred ->
+                val name = renderName(pred)
+                Fingerprint(
+                    definingClass = adSectionClassDef.type,
+                    name = name,
+                    returnType = "V",
+                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                ).method.addInstructions(0, "return-void")
+                println("Remove ads: AdPostSection render '$name' no-opped.")
+            }
+        }.onFailure {
+            println("Remove ads: AdPostSection layer skipped: ${it.message}")
+        }
     }
 }
 

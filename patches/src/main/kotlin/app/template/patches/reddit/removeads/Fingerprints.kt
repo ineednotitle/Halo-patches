@@ -22,14 +22,15 @@ import com.android.tools.smali.dexlib2.Opcode
  *                        ", adsLoadCompleted=" followed by iget-boolean ->h:Z,
  *                        whose <init> writes it via `iput-boolean p8, p0, ->h:Z`  ✔
  *
- * REMOVED 2026.42.0 (formerly "new-feed AdPostSection sections" layer):
- *   The upstream p5-sections injection was STALE here — in this build the class
+ * RE-ADDED 2026.42.0 (formerly "new-feed AdPostSection sections" layer):
+ *   The upstream p5-sections injection is unusable on this build — the class
  *   with toString "AdPostSection(linkId=" (com/reddit/ads/impl/feeds/composables/c.smali)
  *   has <init>(String,String,Ljs0;,AdAnalyticsInfo,Lvwp;,Z,ClickVisibilityDurationVariant,
- *   Lty8;,Lal80;,Lnl0;,Z,Luu40;,Z)V — p5 is an Lvwp; model, NOT a sections List.
- *   Injecting there would VerifyError. Promoted ITEMS are still caught at the
- *   Listing layer. If Reddit reintroduces a sections-list constructor, re-add
- *   after a fresh dump review.
+ *   Lty8;,Lal80;,Lnl0;,Z,Luu40;,Z)V — p5 (5th param) is an Lvwp; model, NOT a
+ *   sections List, so a List-shaped invoke-static there would VerifyError.
+ *   INSTEAD: the patch no-ops the section's two render composables directly
+ *   (identified at execute time by signature: c(L,L,I)V and e(10 params with
+ *   two Function0 slots)V), defeating the whole ad unit at zero model risk.
  *
  * ── How to re-verify after a Reddit update (apktool d reddit.apkm) ──────────
  *  1. smali* /com/reddit/domain/model/listing/Listing.smali → same 3 field writes
@@ -98,6 +99,22 @@ object CommentsAdStateToStringFingerprint : Fingerprint(
     filters = listOf(
         string("CommentsAdState(conversationAdViewState="),
         string(", adsLoadCompleted="),
+    )
+)
+
+/**
+ * 2026.42.x adaptive-feed sponsored unit data holder —
+ * com/reddit/ads/impl/feeds/composables/c.smali in Reddit 2026.42.0.
+ * Its toString renders "AdPostSection(linkId=…". Used to resolve the ad
+ * section class so its render composables can be no-opped (layer 5).
+ */
+object AdPostSectionToStringFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("AdPostSection(linkId="),
     )
 )
 
