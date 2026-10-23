@@ -6,8 +6,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.template.patches.shared.Constants.REDDIT_COMPATIBILITY
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.instructions.BuilderInstruction
-import com.android.tools.smali.dexlib2.builder.instructions.BuilderInstruction11n
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
@@ -94,12 +92,7 @@ val redditUnlockPremiumPatch = bytecodePatch(
         val instructions = fromJsonMethod.implementation?.instructions?.toList()
             ?: throw PatchException("Unlock Premium: fromJson has no body")
 
-        // Compiled as raw BuilderInstructions, NOT as text via the inline smali
-        // template compiler: on the user's device (Patcher 2.0.0, 2026.42.0) the
-        // template round-trip produced an empty method ("Collection is empty" at
-        // InlineSmaliCompiler). Building instructions directly removes that
-        // whole failure class (no .registers directive interplay, no parsing).
-        val plannedInjections = mutableListOf<Pair<Int, List<BuilderInstruction>>>()
+        val plannedInjections = mutableListOf<Pair<Int, String>>() // index → smali
         val skippedParams = mutableListOf<String>()
 
         instructions.forEachIndexed { index, instruction ->
@@ -116,24 +109,33 @@ val redditUnlockPremiumPatch = bytecodePatch(
                 ?: throw PatchException("Unlock Premium: Account <init> invoke is not /range form")
 
             val parameterTypes = reference.parameterTypes.map { it.toString() }
-            val injection = mutableListOf<BuilderInstruction>()
-            premiumParams.forEach { paramIndex ->
-                if (paramIndex >= parameterTypes.size) return@forEach
-                val paramType = parameterTypes[paramIndex]
-                if (paramType != "Z") {
-                    skippedParams.add("param #$paramIndex ($paramType) (site regs ${range.startRegister}..${range.startRegister + parameterTypes.sumOf { t -> if (t == "J" || t == "D") 2 else 1 }})")
-                    return@forEach
+            val injection = buildString {
+                premiumParams.forEach { paramIndex ->
+                    if (paramIndex >= parameterTypes.size) return@forEach
+                    val paramType = parameterTypes[paramIndex]
+                    if (paramType != "Z") {
+                        skippedParams.add("param #$paramIndex ($paramType)")
+                        return@forEach
+                    }
+                    var reg = range.startRegister + 1 // +1 = 'this'
+                    for (i in 0 until paramIndex) {
+                        reg += if (parameterTypes[i] == "J" || parameterTypes[i] == "D") 2 else 1
+                    }
+                    // const/4 (11n) accepts ONLY v0-v15; for wider registers use
+                    // const/16 (21s). An out-of-range const/4 makes the inline
+                    // smali compiler SILENTLY DISCARD the whole template method
+                    // → NoSuchElementException "Collection is empty" downstream.
+                    // Reproduced locally against the smali tree-walker; it exactly
+                    // matched the device crash on 2026.42.0 (ctor-arg registers
+                    // sit at v35-v38 there).
+                    val opcode = if (reg <= 15) "const/4" else "const/16"
+                    append("$opcode v$reg, 0x1\n")
                 }
-                var reg = range.startRegister + 1 // +1 = 'this'
-                for (i in 0 until paramIndex) {
-                    reg += if (parameterTypes[i] == "J" || parameterTypes[i] == "D") 2 else 1
-                }
-                injection.add(BuilderInstruction11n(Opcode.CONST_4, reg, 0x1))
-            }
+            }.trim()
 
             if (injection.isNotEmpty()) {
                 plannedInjections.add(index to injection)
-                println("Unlock Premium: planned ${injection.size} write(s) at invoke @#$index (regs ${injection.joinToString { "v${it.registerA}" }})")
+                println("Unlock Premium: planned invoke @#$index:\n$injection")
             }
         }
 
@@ -147,7 +149,7 @@ val redditUnlockPremiumPatch = bytecodePatch(
         // ── Step 3: apply from the END so earlier indices stay valid ─────────
         plannedInjections
             .sortedByDescending { it.first }
-            .forEach { (index, instructions) -> fromJsonMethod.addInstructions(index, instructions) }
+            .forEach { (index, smali) -> fromJsonMethod.addInstructions(index, smali) }
 
         println("Unlock Premium: patched ${plannedInjections.size} Account construction site(s).")
         if (skippedParams.isNotEmpty()) {
