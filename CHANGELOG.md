@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.1.0...v1.2.0) (2026-10-23)
+
+### ✨ New Features
+
+* **reddit:** 3 new account-flag patches (bytecode-selected, 2026.42.0) ([b7eb077](https://github.com/ineednotitle/doom-reddit-patches/commit/b7eb0771d4f80d61d8f38532e1c6a0d109de1b06))
+
 ## [1.1.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.6...v1.1.0) (2026-10-23)
 
 ### 🐛 Bug Fixes
