@@ -68,8 +68,9 @@ object DistrictEventsExceptionFingerprint : Fingerprint(
 /**
  * CleverTap wrapper a(Identity) — writes the identity + device fingerprint
  * (consts verified: "Application"/"AppVersion"/"DeviceModel"/"Mobile"/
- * "OSVersion"/"Platform"/"os") into the CleverTap user profile, then flushes
- * events via `CleverTapAPI->n(String, HashMap)` (pushEvent) at :230.
+ * "OSVersion"/"Platform"/"os") into the event properties map, then flushes
+ * via `CleverTapAPI->n(String, HashMap)` (pushEvent) at :230 — all of this
+ * lives INSIDE method a (74–238) in 2.76.0.
  */
 object DistrictCleverTapIdentityFingerprint : Fingerprint(
     definingClass = "$GOOUT/init/clevertap/b;",
@@ -82,15 +83,19 @@ object DistrictCleverTapIdentityFingerprint : Fingerprint(
     )
 )
 
-/** CleverTap wrapper b(properties) — bare event-properties push (`Application` const verified). */
+/**
+ * CleverTap wrapper b(properties: Map) — profile-properties push: grabs the
+ * singleton (`clevertap/b->a`), walks `CleverTapAPI.b:d1 -> d1.g:r` and calls
+ * `r->o(Map)` (profile push). Body is 5 instructions with NO const-strings —
+ * verified 2.76.0 lines 239–275 — so this pins class+name+signature only
+ * (class-exact pin makes that unique; a wrong string filter here is what
+ * broke v1.3.0 on-device).
+ */
 object DistrictCleverTapEventFingerprint : Fingerprint(
     definingClass = "$GOOUT/init/clevertap/b;",
     name = "b",
     returnType = "V",
-    parameters = listOf("Ljava/util/Map;"),
-    filters = listOf(
-        string("Application")
-    )
+    parameters = listOf("Ljava/util/Map;")
 )
 
 /**

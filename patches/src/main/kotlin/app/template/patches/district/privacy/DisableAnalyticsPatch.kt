@@ -22,7 +22,7 @@ import app.morphe.patcher.patch.bytecodePatch
  *      init/clevertap/b.a stamps "Application"/"AppVersion"/"DeviceModel"/
  *      "Mobile"/"OSVersion"/"Platform" before pushEvent; blocked at the one
  *      wrapper that owns those writes.
- *   5. CleverTap event pushes — init/clevertap/b.b.
+ *   5. CleverTap profile-properties pushes — init/clevertap/b.b.
  *   6. In-house crash logger — every caught Throwable in the app is enqueued
  *      through commons/crashlogger/d.a/b/c; the enqueue is killed so those
  *      reports never leave the device through the app's own pipe.
