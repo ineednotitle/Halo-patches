@@ -162,7 +162,7 @@ val redditUnlockPremiumPatch = bytecodePatch(
  * If the fill can't be located, fall back to ascending register order —
  * R8/Moshi codegen assigns the option strings to sequential registers.
  */
-private fun MutableMethod.parseJsonKeyOrder(): List<String> {
+internal fun MutableMethod.parseJsonKeyOrder(): List<String> {
     val instructions = implementation?.instructions?.toList()
         ?: throw PatchException("Unlock Premium: adapter <init> has no body")
 
