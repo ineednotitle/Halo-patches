@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.0...v1.2.1) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* **reddit:** promote 2026.42.0 from experimental to fully supported ([5c08749](https://github.com/ineednotitle/doom-reddit-patches/commit/5c08749fe8771e8f4ce32a1c1c496ba76614612b))
+
 ## [1.2.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.1.0...v1.2.0) (2026-10-23)
 
 ### ✨ New Features

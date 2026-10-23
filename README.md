@@ -11,7 +11,7 @@ See [ANALYSIS.md](ANALYSIS.md) for the full teardown of Doom's method.
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.2.0](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.2.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;322 patches total
+> **[v1.2.1](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.2.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;322 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -260,7 +260,7 @@ See [ANALYSIS.md](ANALYSIS.md) for the full teardown of Doom's method.
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.42.0 | 🧪&nbsp;2026.41.0 | 🧪&nbsp;2026.40.0 | 🧪&nbsp;2026.39.0 | 2026.24.0 | 2026.10.0 |
+| 2026.42.0 | 🧪&nbsp;2026.41.0 | 🧪&nbsp;2026.40.0 | 🧪&nbsp;2026.39.0 | 2026.24.0 | 2026.10.0 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
