@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.4...v1.0.5) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* mirror the reference pack's proven fingerprint style and build stack ([1afda64](https://github.com/ineednotitle/doom-reddit-patches/commit/1afda640e72d4aef79d8d758fdc6f1ea974408d4))
+* vendor PatchListGenerator from the reference pack (own app.morphe.util copy) ([2e28cff](https://github.com/ineednotitle/doom-reddit-patches/commit/2e28cffc226e510cb2138ea6e1f05ab3133562c5))
+
 ## [1.0.4](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.3...v1.0.4) (2026-10-22)
 
 ### 🐛 Bug Fixes
