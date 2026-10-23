@@ -4,6 +4,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.instructions.BuilderInstruction
+import com.android.tools.smali.dexlib2.builder.instructions.BuilderInstruction11n
+import com.android.tools.smali.dexlib2.builder.instructions.BuilderInstruction21c
+import com.android.tools.smali.dexlib2.immutable.reference.ImmutableFieldReference
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -51,7 +55,7 @@ internal fun forceAccountFlags(
     val instructions = fromJsonMethod.implementation?.instructions?.toList()
         ?: throw PatchException("$logTag: fromJson has no body")
 
-    val plannedInjections = mutableListOf<Pair<Int, String>>()
+    val plannedInjections = mutableListOf<Pair<Int, List<BuilderInstruction>>>()
     val skippedParams = mutableListOf<String>()
 
     instructions.forEachIndexed { index, instruction ->
@@ -65,26 +69,39 @@ internal fun forceAccountFlags(
             ?: throw PatchException("$logTag: Account <init> invoke is not /range form")
 
         val parameterTypes = reference.parameterTypes.map { it.toString() }
-        val injection = buildString {
-            wanted.forEach { (paramIndex, desired, key) ->
-                if (paramIndex >= parameterTypes.size) return@forEach
-                var reg = range.startRegister + 1 // +1 = 'this'
-                for (i in 0 until paramIndex) {
-                    reg += if (parameterTypes[i] == "J" || parameterTypes[i] == "D") 2 else 1
-                }
-                when (val paramType = parameterTypes[paramIndex]) {
-                    "Z" -> append("const/4 v$reg, ${if (desired) "0x1" else "0x0"}\n")
-                    "Ljava/lang/Boolean;" -> append(
-                        "sget-object v$reg, Ljava/lang/Boolean;->${if (desired) "TRUE" else "FALSE"}:Ljava/lang/Boolean;\n"
-                    )
-                    else -> skippedParams.add("$key (#$paramIndex, $paramType)")
-                }
+        val injection = mutableListOf<BuilderInstruction>()
+        wanted.forEach { (paramIndex, desired, key) ->
+            if (paramIndex >= parameterTypes.size) return@forEach
+            var reg = range.startRegister + 1 // +1 = 'this'
+            for (i in 0 until paramIndex) {
+                reg += if (parameterTypes[i] == "J" || parameterTypes[i] == "D") 2 else 1
             }
-        }.trim()
+            // Raw BuilderInstructions, not textual smali — the inline template
+            // compiler path produced an empty method on the user's device
+            // ("Collection is empty" at InlineSmaliCompiler); bypassing it removes
+            // that whole failure class.
+            when (val paramType = parameterTypes[paramIndex]) {
+                "Z" -> injection.add(
+                    BuilderInstruction11n(Opcode.CONST_4, reg, if (desired) 0x1 else 0x0)
+                )
+                "Ljava/lang/Boolean;" -> injection.add(
+                    BuilderInstruction21c(
+                        Opcode.SGET_OBJECT,
+                        reg,
+                        ImmutableFieldReference.of(
+                            "Ljava/lang/Boolean;",
+                            if (desired) "TRUE" else "FALSE",
+                            "Ljava/lang/Boolean;",
+                        ),
+                    )
+                )
+                else -> skippedParams.add("$key (#$paramIndex, $paramType)")
+            }
+        }
 
         if (injection.isNotEmpty()) {
             plannedInjections.add(index to injection)
-            println("$logTag: planned invoke @#$index:\n$injection")
+            println("$logTag: planned ${injection.size} write(s) at invoke @#$index")
         }
     }
 
@@ -98,7 +115,7 @@ internal fun forceAccountFlags(
     // Apply from the END so earlier instruction indices stay valid while the method grows.
     plannedInjections
         .sortedByDescending { it.first }
-        .forEach { (index, smali) -> fromJsonMethod.addInstructions(index, smali) }
+        .forEach { (index, instructions) -> fromJsonMethod.addInstructions(index, instructions) }
 
     println("$logTag: patched ${plannedInjections.size} Account construction site(s).")
     if (skippedParams.isNotEmpty()) {
