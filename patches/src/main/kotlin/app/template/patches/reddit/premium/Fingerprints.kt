@@ -1,10 +1,7 @@
 package app.template.patches.reddit.premium
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 
 /**
  * Targets AccountJsonAdapter.fromJson(JsonReader) — the Moshi deserialization
@@ -19,39 +16,25 @@ import com.android.tools.smali.dexlib2.Opcode
  *   "has_gold_subscription", "has_premium_avatar_treatment") are a public API
  *   contract — R8 cannot rename payload strings.
  *
- * Verified on Reddit 2026.42.0 (APK 2642021, Oct 2026):
+ * Verified on Reddit 2026.42.0 (versionCode 2642020/2642021, Oct 2026):
  *   class  : smali_classes4/com/reddit/domain/model/AccountJsonAdapter.smali
- *   method : fromJson(Lcom/squareup/moshi/e;)Ljava/lang/Object;   (line 1389)
- *   strings: const-string v13, "is_gold"  (options table, line 244)
- *   ctor   : Account.<init> has 54 params; param #11 = hasPremium,
- *            #12 = isPremiumSubscriber, #14 = hasPremiumAvatarTreatment
- *            (with the J param #3 consuming two registers: 11→v21, 12→v22,
- *            14→v24 at the {v8..v63} construction site, and →v18,v19,v21 at
- *            the DefaultConstructorMarker fallback site)
+ *   fromJson: line 778 → fromJson(Lcom/squareup/moshi/e;)Ljava/lang/Object;  (public)
+ *   <init>  : line 175 → <init>(Lcom/squareup/moshi/j;)V                     (public)
+ *   toJson  : line 4268 → toJson(Luir;Ljava/lang/Object;)V
  *
- * ── How to re-verify after a Reddit update ─────────────────────────────────
- *   apktool d reddit.apkm
- *   grep -rln '"is_gold"' smali* / | grep -i adapter
- *   → find the AccountJsonAdapter class, confirm fromJson still builds
- *     Lcom/reddit/domain/model/Account; via invoke-direct …<init>(…).
- *   The patch re-derives param positions from the JSON options table at patch
- *   time, so reshuffled property order is handled automatically; only the
- *   disappearance of the adapter or the JSON keys themselves breaks it.
- * ──────────────────────────────────────────────────────────────────────────
+ * Declaration style deliberately mirrors the production-proven reference pack
+ * (rushiranpise/morphe-patches): definingClass + name + accessFlags +
+ * returnType + exact full parameter descriptors. No partial "L" parameter
+ * types and no string() filters: this exact field set compiles to the
+ * constructor overload whose positional binary layout stays stable against
+ * Manager/Patcher 2.0.0's compatibility constructors.
  */
 object AccountFromJsonFingerprint : Fingerprint(
-    // No definingClass pin: the legacy field is unreliable under Patcher
-    // 2.0.0-dev builds, and this fingerprint needs none — the three premium
-    // JSON keys appear (in classes4) in AccountJsonAdapter ONLY, so
-    // name + Object return + one reference param + the strings is unique.
+    definingClass = "Lcom/reddit/domain/model/AccountJsonAdapter;",
     name = "fromJson",
     returnType = "Ljava/lang/Object;",
-    parameters = listOf("L"),
-    filters = listOf(
-        string("is_gold"),
-        string("has_gold_subscription"),
-        string("has_premium_avatar_treatment")
-    )
+    parameters = listOf("Lcom/squareup/moshi/e;"),
+    accessFlags = listOf(AccessFlags.PUBLIC)
 )
 
 /**
@@ -59,22 +42,13 @@ object AccountFromJsonFingerprint : Fingerprint(
  * (the ordered JSON key names). The patch reads this table to compute which
  * constructor parameter (and therefore which register) carries each premium
  * boolean at the Account construction sites inside fromJson.
+ * Only one <init> with one reference parameter exists in the adapter class,
+ * so class scope alone disambiguates it.
  */
 object AccountJsonAdapterConstructorFingerprint : Fingerprint(
-    // Without extra constraints this also matches Account.<init> and
-    // AccountDataModel.<init> (in classes6: first param is a String and both
-    // embed is_gold/has_gold_subscription via Moshi OptionalJsonProperty
-    // marker strings) → "fingerprint matched multiple methods" (v1.0.1 bug).
-    // The structural discriminator: only the ADAPTER constructor packs the
-    // key array into JsonReader.Options (filled-new-array/range); the data
-    // class constructors merely assign params and contain no array fill.
-    // Avoids definingClass, which Patcher 2.0.0-dev builds handle badly.
+    definingClass = "Lcom/reddit/domain/model/AccountJsonAdapter;",
     name = "<init>",
     returnType = "V",
-    parameters = listOf("L"),
-    filters = listOf(
-        string("is_gold"),
-        string("has_gold_subscription"),
-        opcode(Opcode.FILLED_NEW_ARRAY_RANGE)
-    )
+    parameters = listOf("Lcom/squareup/moshi/j;"),
+    accessFlags = listOf(AccessFlags.PUBLIC)
 )

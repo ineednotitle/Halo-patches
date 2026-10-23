@@ -22,5 +22,5 @@ plugins {
     // The Morphe patches plugin. It auto-includes the `patches` and
     // `extensions/extension` modules and provides the `buildAndroid` task
     // that produces patches-*.mpp. (Same version Doom uses.)
-    id("app.morphe.patches") version "2.0.0"
+    id("app.morphe.patches") version "1.3.3"
 }
