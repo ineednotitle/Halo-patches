@@ -1911,4 +1911,31 @@ val LEAP_FITNESS_ALL = arrayOf(
         )
     )
 
+    /**
+     * District by Zomato — verified against 2.76.0 (versionCode 1000027600,
+     * Oct 2026 Play Store build).
+     *
+     * Ships as an XAPK (base apk + armeabi_v7a config split) — mirrors:
+     * APKPure pkg com.application.zomato.district.
+     *
+     * Signing-certificate SHA-256 extracted from the official build's
+     * APK-Signature-Scheme v2/v3 blocks (no v1 signature on this APK):
+     *   a81d49ec84db1b0a939cb49d5464071ea1ff66d6c44999359986d0dbde0a6011
+     */
+    val DISTRICT_COMPATIBILITY = Compatibility(
+        name = "District",
+        packageName = "com.application.zomato.district",
+        apkFileType = ApkFileType.XAPK,
+        appIconColor = 0xE23744,
+        signatures = setOf(
+            "a81d49ec84db1b0a939cb49d5464071ea1ff66d6c44999359986d0dbde0a6011"
+        ),
+        targets = listOf(
+            AppTarget(
+                version = "2.76.0",
+                minSdk = 32,
+                isExperimental = true
+            )
+        )
+    )
 }
