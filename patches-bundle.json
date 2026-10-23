@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-23T11:44:23",
-  "description": "## [1.2.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.0...v1.2.1) (2026-10-23)\n\n### 🐛 Bug Fixes\n\n* **reddit:** promote 2026.42.0 from experimental to fully supported ([5c08749](https://github.com/ineednotitle/doom-reddit-patches/commit/5c08749fe8771e8f4ce32a1c1c496ba76614612b))",
-  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.2.1/patches-1.2.1.mpp",
+  "created_at": "2026-10-23T11:58:30",
+  "description": "## [1.2.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.1...v1.2.2) (2026-10-23)\n\n### 🐛 Bug Fixes\n\n* **reddit:** upstream-probed constructor fingerprint for options ctor ([9722576](https://github.com/ineednotitle/doom-reddit-patches/commit/972257612df05f8cdd30e25cbcd3a8b14e56eae0))",
+  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.2.2/patches-1.2.2.mpp",
   "signature_download_url": "",
-  "version": "1.2.1"
+  "version": "1.2.2"
 }

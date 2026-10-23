@@ -1,3 +1,9 @@
+## [1.2.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.1...v1.2.2) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* **reddit:** upstream-probed constructor fingerprint for options ctor ([9722576](https://github.com/ineednotitle/doom-reddit-patches/commit/972257612df05f8cdd30e25cbcd3a8b14e56eae0))
+
 ## [1.2.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.0...v1.2.1) (2026-10-23)
 
 ### 🐛 Bug Fixes
