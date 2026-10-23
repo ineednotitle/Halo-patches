@@ -1,3 +1,9 @@
+## [1.0.6](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.5...v1.0.6) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* make premium fingerprints version-robust across Reddit builds ([fddf187](https://github.com/ineednotitle/doom-reddit-patches/commit/fddf1879d4afe09adaa1d8dba32d5cf6376fdb77))
+
 ## [1.0.5](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.0.4...v1.0.5) (2026-10-23)
 
 ### 🐛 Bug Fixes
