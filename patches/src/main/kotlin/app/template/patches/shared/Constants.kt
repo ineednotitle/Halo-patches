@@ -1870,10 +1870,9 @@ val LEAP_FITNESS_ALL = arrayOf(
     LEAP_FITNESS_WOMEN_COMPATIBILITY,
 
 )
-}
 
-// Reddit compat moved here before merging the Doom suite import
-val REDDIT_COMPATIBILITY = Compatibility(
+    // ── Reddit (kept from the pre-import constants) ─────────────────────────
+    val REDDIT_COMPATIBILITY = Compatibility(
         name = "Reddit",
         packageName = "com.reddit.frontpage",
         apkFileType = ApkFileType.APKM,
@@ -1912,4 +1911,5 @@ val REDDIT_COMPATIBILITY = Compatibility(
             )
         )
     )
+
 }
