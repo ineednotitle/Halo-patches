@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.3...v1.2.4) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* **reddit:** kill AdPostSection render composables — 42.0 feed-ad path ([145ce53](https://github.com/ineednotitle/doom-reddit-patches/commit/145ce53256c4a54e71f2b307e769ffaaa2533c34))
+* **reddit:** missing AccessFlags import in RemoveAdsPatch ([9563220](https://github.com/ineednotitle/doom-reddit-patches/commit/9563220cb4aacb635308b6bb16f94b16b1df3e60))
+
 ## [1.2.3](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.2...v1.2.3) (2026-10-23)
 
 ### 🐛 Bug Fixes
