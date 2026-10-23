@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.2...v1.2.3) (2026-10-23)
+
+### 🐛 Bug Fixes
+
+* **reddit:** const/16 for registers above v15 (root-caused via local smali repro) ([812a94a](https://github.com/ineednotitle/doom-reddit-patches/commit/812a94ab9f90a6814c5dcb570ede5144c472c2a8))
+* **reddit:** inject BuilderInstructions directly, bypass the inline smali compiler ([d6d51fa](https://github.com/ineednotitle/doom-reddit-patches/commit/d6d51fae46d9655150d41d5b89d3e2aca8f86839))
+
 ## [1.2.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.2.1...v1.2.2) (2026-10-23)
 
 ### 🐛 Bug Fixes
