@@ -72,6 +72,9 @@ No optimization warranted; patching is per-release, not per-day.
 - No new threads, sleeves, wake-locks, loopers, broadcast receivers, or handlers introduced anywhere in injected code — zero background energy footprint.
 - No allocation-only hot loops outside the (bounded) feed-page filter.
 
-## 7. Changelog
+## 7. Changelog & closure status
 
-- **v1.2.5** — Fixed `NullPointerException` latent crash in `PROMOTED_GETTER_CACHE`; reflection exceptions after warm-up eliminated; `Optional`-based cache; names array made constant.
+- **v1.2.5** — Fixed `NullPointerException` latent crash in `PROMOTED_GETTER_CACHE`; reflection exceptions after warm-up eliminated; `Optional`-based cache; names array made constant. ✅ SHIPPED.
+- **v1.2.6** — Removed dead `hideNewPostAds(List)` entry point from the extension (the AdPostSection sections-list constructor does not exist on 2026.42.x — p5 is an `Lvwp` model — so the sections-list layer was unreferenced dead code; the composable render kill covers the adaptive-feed path). Smaller extension dex, unchanged behavior. ✅ SHIPPED.
+
+**Closure:** every actionable finding from this audit is resolved. Remaining entries (per-item reflective invoke ≈0.3–1µs, per-page copy-on-first-ad allocation, patch-time fingerprint scans) were re-reviewed and judged at-or-below threshold: fixing them would add complexity without a user-perceivable effect.

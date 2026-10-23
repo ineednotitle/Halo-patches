@@ -19,9 +19,13 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * Contract expected by the patch (must stay in sync):
  *   hideOldPostAds(List)  → same or shorter list (promoted items removed)
- *   hideNewPostAds(List)  → null  (patch substitutes an empty immutable list)
  *   hideCommentAds()      → true
  *   hideCommentAds(Z)Z    → true (OR with original)
+ *
+ * The former hideNewPostAds entry point was REMOVED: the AdPostSection
+ * sections-list constructor does not exist on Reddit 2026.42.x (p5 is an
+ * Lvwp model), so the sections-list layer is dead and the composable render
+ * kill in RemoveAdsPatch fully covers the adaptive-feed ad path.
  */
 public final class RedditFeedHelper {
 
@@ -70,15 +74,6 @@ public final class RedditFeedHelper {
         }
 
         return filtered != null ? filtered : list;
-    }
-
-    /**
-     * Injection point — new-feed AdPostSection sections list.
-     * Returning null tells the patch smali to substitute an empty
-     * immutable list (sections are rebuilt from scratch without ad slots).
-     */
-    public static List<?> hideNewPostAds(List<?> list) {
-        return null;
     }
 
     /**
