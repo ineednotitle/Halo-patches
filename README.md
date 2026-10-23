@@ -8,6 +8,31 @@ recipe used by [rushiranpise/morphe-patches](https://github.com/rushiranpise/mor
 [morphe-patches-template](https://github.com/MorpheApp/morphe-patches-template).
 See [ANALYSIS.md](ANALYSIS.md) for the full teardown of Doom's method.
 
+## 🛡️ Security notes
+
+This bundle was audited (full report: [SECURITY_AUDIT.md](SECURITY_AUDIT.md)). Nothing in it phones home: the only runtime payload injected
+into apps is ~120 lines of defensive Java — no network, no exec, no dynamic
+code loading, and it fails open on any model drift rather than crashing the
+feed. Still, **understand three risk classes before enabling patches per-app**:
+
+- 🔐 **Signature / installer spoofs** — let an app claim a different
+  signing-certificate identity to the system (microG-style hooks). Enable only
+  for apps you already trust; sideloaded malware could abuse the same hooks.
+- 🧨 **Anti-tamper / Play-integrity (pairip) / frida / xposed bypasses** —
+  defeat the app's own tamper detection. Fine on official APKs; on *repacked*
+  APKs the same bypass hides genuine malware tampering. Only patch APKs whose
+  signature you verified (Reddit entries here pin the official signing SHA-256).
+- 🔓 **Billing / premium unlocks & cert-pinning/firebase-cert-hash bypasses** —
+  mostly client-side cosmetic gates (server-validated flows still fail
+  server-side). Cert-verification bypasses can weaken TLS guarantees inside
+  that app — keep them off unless specifically needed.
+
+Supply chain: every `.mpp` ships with a **build-provenance attestation** (see
+the repo's **Attestations** section), the Gradle wrapper jar is byte-identical
+to gradle/gradle@v9.7.0's own wrapper
+(`7a9ce74c…625d`), the Gradle *distribution* is pinned by
+`distributionSha256Sum`, and all GitHub Actions are pinned to commit SHAs.
+
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
