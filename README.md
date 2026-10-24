@@ -33,6 +33,18 @@ to gradle/gradle@v9.7.0's own wrapper
 (`7a9ce74c…625d`), the Gradle *distribution* is pinned by
 `distributionSha256Sum`, and all GitHub Actions are pinned to commit SHAs.
 
+## 🧩 Everything Widgets — full unlock + privacy patches
+
+Three patches, verified byte-for-byte against **Everything Widgets 2.1.014**
+(versionCode `63`, official cert `a40da80a…a71bf5dc`; standalone ~16 MB APK —
+it is a **paid** app, APKPure 404s it, use appteka's signed mirror):
+
+| 💊 Patch | What it does | Verified anchors (2.1.014 smali) |
+|---|---|---|
+| **Unlock Premium** |Bypasses the Google **Pairip license check** (this app's only purchase gate), so the paid app runs without a Play purchase. Note: in-app billing is donations-only ($1.99–$19.99 cosmetic "Premium supporter" badge); all 400+ widgets ship with the app itself. | `pairip/licensecheck/LicenseContentProvider.onCreate` → `true`, `LicenseClient.initializeLicenseCheck` → no-op |
+| **Spoof Play Store signature** | Keeps the license bypass alive across Pairip's background re-checks: response code forced to `LICENSED`, RSA payload verification no-oped, paywall activity self-closes. Re-signed installs keep passing. | `LicenseClient.processResponse` (force `p1=0`), `LicenseResponseHelper.validateResponse`, `LicenseActivity.onStart`→`finish()` |
+| **Remove tracking & analytics** | Facebook SDK auto-init killed, OneSignal killed (**OneSignal pushes stop** — accepted trade-off), Firebase Crashlytics/Performance/Analytics collection switched **off** at boot (init kept alive on purpose: weather/speed-test widgets instrument through FirebasePerformance). | `FacebookInitProvider.onCreate`→`true`, `OneSignal.initWithContext`→no-op, `ApplicationClass.onCreate` +3 SDK opt-outs |
+
 ## 📍 District by Zomato — privacy patches
 
 Two new patches, verified byte-for-byte against **District 2.76.0**

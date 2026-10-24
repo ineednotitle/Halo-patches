@@ -1938,4 +1938,30 @@ val LEAP_FITNESS_ALL = arrayOf(
             )
         )
     )
+
+    /**
+     * Everything Widgets (JustNewDesigns — Nothing-OS-styled widget pack).
+     * Verified against 2.1.014 (versionCode 63, built 2026-01-21, standalone
+     * APK ~16 MB; it is a PAID app on Google Play, so mirrors like appteka
+     * carry the original signed build rather than APKPure).
+     *
+     * Signing-certificate SHA-256 of the official build (META-INF/ANDROID.RSA,
+     * first cert): a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc
+     */
+    val EVERYTHING_WIDGETS_COMPATIBILITY = Compatibility(
+        name = "Everything Widgets",
+        packageName = "com.jndapp.nothing.widgets.pack",
+        apkFileType = ApkFileType.APK,
+        appIconColor = 0x0F0F0F,
+        signatures = setOf(
+            "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+        ),
+        targets = listOf(
+            AppTarget(
+                version = "2.1.014",
+                minSdk = 31,
+                isExperimental = true
+            )
+        )
+    )
 }
