@@ -1,3 +1,9 @@
+## [1.6.4](https://github.com/ineednotitle/Halo-patches/compare/v1.6.3...v1.6.4) (2026-10-24)
+
+### 🐛 Bug Fixes
+
+* Strava login/join broken by forced password-only flag - split OTP bypass into opt-in patch ([caa9584](https://github.com/ineednotitle/Halo-patches/commit/caa9584f7db560ce1d8a19f87980af97cf577dd5))
+
 ## [1.6.3](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.2...v1.6.3) (2026-10-24)
 
 ### 🐛 Bug Fixes

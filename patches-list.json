@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -1803,6 +1803,37 @@
         "RawResourcePatch"
       ],
       "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Force password login (OTP bypass)",
+      "description": "Always shows the password login field instead of the OTP code flow. OFF by default: breaks log-in AND sign-up for OTP-only accounts. Enable only if your Strava account has an actual password.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.strava",
+          "name": "Strava",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#FC4C02",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "480.15",
+              "versionCodes": {
+                "ARM64_V8A": 12399564,
+                "ARMEABI_V7A": 12399564,
+                "X86_64": 12399564,
+                "X86": 12399564
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
@@ -7460,7 +7491,7 @@
     },
     {
       "name": "Unlock Premium",
-      "description": "Unlocks Strava Premium features. Also re-enables password login after OTP.",
+      "description": "Unlocks Strava Premium features.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

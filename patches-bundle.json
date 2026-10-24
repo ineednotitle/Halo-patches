@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-24T11:28:46",
-  "description": "## [1.6.3](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.2...v1.6.3) (2026-10-24)\n\n### 🐛 Bug Fixes\n\n* rebrand to Holopatch Patches ([5f60331](https://github.com/ineednotitle/doom-reddit-patches/commit/5f60331de6007e2a38e0d1d683421fd5ec62ca9f))",
-  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.6.3/patches-1.6.3.mpp",
+  "created_at": "2026-10-24T12:12:43",
+  "description": "## [1.6.4](https://github.com/ineednotitle/Halo-patches/compare/v1.6.3...v1.6.4) (2026-10-24)\n\n### 🐛 Bug Fixes\n\n* Strava login/join broken by forced password-only flag - split OTP bypass into opt-in patch ([caa9584](https://github.com/ineednotitle/Halo-patches/commit/caa9584f7db560ce1d8a19f87980af97cf577dd5))",
+  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.6.4/patches-1.6.4.mpp",
   "signature_download_url": "",
-  "version": "1.6.3"
+  "version": "1.6.4"
 }

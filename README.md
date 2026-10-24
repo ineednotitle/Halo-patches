@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.6.3](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.6.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;327 patches total
+> **[v1.6.4](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.6.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;328 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -328,6 +328,22 @@ to gradle/gradle@v9.7.0's own wrapper
 |----------|----------------|-----------|
 | [Disable telemetry](#disable-telemetry) | Disables CamScanner's custom telemetry/log-agent system. |  |
 | [Unlock Yearly](#unlock-yearly) | Unlocks premium features without login. Note: Login Won't Work |  |
+
+</details>
+
+<details>
+<summary>📦 Strava&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 480.15 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Force password login (OTP bypass)](#force-password-login-otp-bypass) | Always shows the password login field instead of the OTP code flow. OFF by default: breaks log-in AND sign-up for OTP-only accounts. Enable only if your Strava account has an actual password. |  |
+| [Unlock Premium](#unlock-premium) | Unlocks Strava Premium features. |  |
 
 </details>
 
@@ -2300,21 +2316,6 @@ to gradle/gradle@v9.7.0's own wrapper
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks Sticker Maker premium and ad-free checks. |  |
-
-</details>
-
-<details>
-<summary>📦 Strava&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 480.15 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Unlock Premium](#unlock-premium) | Unlocks Strava Premium features. Also re-enables password login after OTP. |  |
 
 </details>
 
