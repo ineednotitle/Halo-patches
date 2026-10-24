@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-24T10:44:15",
-  "description": "## [1.6.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.0...v1.6.1) (2026-10-24)\n\n### 🐛 Bug Fixes\n\n* Nothing Launcher - add drawer icon so the app can be opened on other ROMs ([6932376](https://github.com/ineednotitle/doom-reddit-patches/commit/693237613f5eb0fd5a36132b14b03061b3b4e5d5))",
-  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.6.1/patches-1.6.1.mpp",
+  "created_at": "2026-10-24T10:58:48",
+  "description": "## [1.6.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.1...v1.6.2) (2026-10-24)\n\n### 🐛 Bug Fixes\n\n* remove Nothing Launcher and Nothing Widgets patches ([9c3a6d8](https://github.com/ineednotitle/doom-reddit-patches/commit/9c3a6d81d7718a538068ce052089f8a472d7cee4))",
+  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.6.2/patches-1.6.2.mpp",
   "signature_download_url": "",
-  "version": "1.6.1"
+  "version": "1.6.2"
 }

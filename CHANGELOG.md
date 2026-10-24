@@ -1,3 +1,9 @@
+## [1.6.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.1...v1.6.2) (2026-10-24)
+
+### 🐛 Bug Fixes
+
+* remove Nothing Launcher and Nothing Widgets patches ([9c3a6d8](https://github.com/ineednotitle/doom-reddit-patches/commit/9c3a6d81d7718a538068ce052089f8a472d7cee4))
+
 ## [1.6.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.0...v1.6.1) (2026-10-24)
 
 ### 🐛 Bug Fixes
