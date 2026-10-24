@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.5.0...v1.6.0) (2026-10-24)
+
+### ✨ New Features
+
+* Nothing Launcher 3.3.10 - universal compatibility + block analytics ([6dbefd5](https://github.com/ineednotitle/doom-reddit-patches/commit/6dbefd571875ce4986a34029134ccec19d32176b))
+
 ## [1.5.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.4.1...v1.5.0) (2026-10-24)
 
 ### ✨ New Features

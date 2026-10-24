@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.5.0](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.5.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;328 patches total
+> **[v1.6.0](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.6.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;330 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -200,6 +200,22 @@ to gradle/gradle@v9.7.0's own wrapper
 |----------|----------------|-----------|
 | [Block analytics & data collection](#block-analytics-data-collection) | Neutralizes Firebase Analytics, AppsFlyer, CleverTap event fan-out and the in-house crash-report enqueue of District by Zomato. |  |
 | [Block location tracking](#block-location-tracking) | Stops District by Zomato from acquiring GPS fixes (continuous updates + one-shot fetch). Manual city selection still works. |  |
+
+</details>
+
+<details>
+<summary>📦 Nothing Launcher&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.3.10 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Block analytics & data collection](#block-analytics-data-collection) | Stops Nothing Launcher from reporting device/ROM identifiers via Firebase Analytics: kills the ROM-version user-property upload and disables Google's automatic analytics collection (registrar removal). Push notifications keep working. |  |
+| [Universal Android compatibility](#universal-android-compatibility) | Lets Nothing Launcher install & run on non-Nothing ROMs (ColorOS, realme UI, ...) by lifting the Nothing-OS feature filter. Then set it as your Home app in system settings. |  |
 
 </details>
 

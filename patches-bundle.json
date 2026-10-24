@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-24T08:44:58",
-  "description": "## [1.5.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.4.1...v1.5.0) (2026-10-24)\n\n### ✨ New Features\n\n* Nothing Widgets 3.4.1 - Universal Android compatibility (ColorOS/realme UI) ([561ba6b](https://github.com/ineednotitle/doom-reddit-patches/commit/561ba6b97eb5e7aeca48f80104a053378a1f20cd))",
-  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.5.0/patches-1.5.0.mpp",
+  "created_at": "2026-10-24T09:34:23",
+  "description": "## [1.6.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.5.0...v1.6.0) (2026-10-24)\n\n### ✨ New Features\n\n* Nothing Launcher 3.3.10 - universal compatibility + block analytics ([6dbefd5](https://github.com/ineednotitle/doom-reddit-patches/commit/6dbefd571875ce4986a34029134ccec19d32176b))",
+  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.6.0/patches-1.6.0.mpp",
   "signature_download_url": "",
-  "version": "1.5.0"
+  "version": "1.6.0"
 }

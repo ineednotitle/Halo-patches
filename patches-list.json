@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -378,6 +378,39 @@
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 32,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block analytics & data collection",
+      "description": "Stops Nothing Launcher from reporting device/ROM identifiers via Firebase Analytics: kills the ROM-version user-property upload and disables Google's automatic analytics collection (registrar removal). Push notifications keep working.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nothing.launcher",
+          "name": "Nothing Launcher",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.3.10",
+              "versionCodes": {
+                "ARM64_V8A": 3031001,
+                "ARMEABI_V7A": 3031001,
+                "X86_64": 3031001,
+                "X86": 3031001
+              },
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]
@@ -3769,6 +3802,37 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Universal Android compatibility",
+      "description": "Lets Nothing Launcher install & run on non-Nothing ROMs (ColorOS, realme UI, ...) by lifting the Nothing-OS feature filter. Then set it as your Home app in system settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nothing.launcher",
+          "name": "Nothing Launcher",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.3.10",
+              "versionCodes": {
+                "ARM64_V8A": 3031001,
+                "ARMEABI_V7A": 3031001,
+                "X86_64": 3031001,
+                "X86": 3031001
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     },
     {
       "name": "Universal Android compatibility",
