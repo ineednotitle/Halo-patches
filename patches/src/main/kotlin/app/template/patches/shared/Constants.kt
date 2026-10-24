@@ -104,7 +104,12 @@ val AMAZON_IN_COMPATIBILITY = Compatibility(
         packageName = "in.amazon.mShop.android.shopping",
         appIconColor = 0xFF9900,
         apkFileType = ApkFileType.XAPK,
-        targets = listOf(AppTarget(version = "32.18.0.300", versionCode = 1243240206))
+        targets = listOf(
+            AppTarget(version = "32.18.0.300", versionCode = 1243240206),
+            // anchor-audited against the decoded 32.19.0.300 XAPK base split
+            // (all 10 Amazon fingerprint anchors + forceDarkAllowed verified)
+            AppTarget(version = "32.19.0.300", versionCode = 1243250306),
+        )
     )
 
 val AMAZON_SHOPPING_COMPATIBILITY = Compatibility(

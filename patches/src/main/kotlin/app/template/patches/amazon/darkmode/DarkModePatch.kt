@@ -67,20 +67,29 @@ val amazonDarkModePatch = bytecodePatch(
         val m = mode ?: "follow_system"
         if (m == "off") return@execute
 
-        // WebView CSS fixes: .locals 1, mWebView=v0, p1=url
+        // The mode is a build-time constant, so it selects a single-argument
+        // helper overload instead of being written into the target method with
+        // const-string. (Upstream wrote it into parameter register p1, the live
+        // page URL, and into v0 at arbitrary return sites — both clobbering
+        // hazards; see SECURITY_AUDIT_AMAZON.md A-2.)
+        val darkInject = if (m == "on") "injectDarkModeOn" else "injectDarkModeAuto"
+        val tintInject = if (m == "on") "tintTabIconOn" else "tintTabIconAuto"
+
+        // WebView CSS fixes: .locals 1 with only v0 free, p1=url must stay
+        // intact. iget v0 (safe: locals may be (re)written before the body
+        // reads them — the body defines them before any use), then one invoke.
         MShopWebViewContainerOnPageFinishedFingerprint.method.addInstructions(
             0,
             """
                 iget-object v0, p0, Lcom/amazon/mShop/web/MShopWebViewContainer;->mWebView:Lcom/amazon/mShop/web/MShopWebView;
-                const-string p1, "$m"
-                invoke-static {v0, p1}, $HELPER->injectDarkMode(Landroid/webkit/WebView;Ljava/lang/String;)V
+                invoke-static {v0}, $HELPER->$darkInject(Landroid/webkit/WebView;)V
             """.trimIndent(),
         )
 
         // Tab bar icon tint — inject before every return-object in getTabIcon()
         // so the returned ImageView has a white SRC_IN filter applied.
-        // getTabIcon() returns Landroid/widget/ImageView; — we intercept the result
-        // register at each return site (working reversed to preserve indices).
+        // Single-argument call: no register is written, so this is safe at
+        // every return site regardless of the method's .locals size.
         val tabMethod = BaseTabControllerGetTabIconFingerprint.method
         val returnIndices = tabMethod.implementation!!.instructions
             .mapIndexedNotNull { i, instr -> if (instr.opcode == Opcode.RETURN_OBJECT) i else null }
@@ -91,8 +100,7 @@ val amazonDarkModePatch = bytecodePatch(
             tabMethod.addInstructions(
                 idx,
                 """
-                    const-string v0, "$m"
-                    invoke-static {v$reg, v0}, $HELPER->tintTabIconIfDark(Landroid/widget/ImageView;Ljava/lang/String;)V
+                    invoke-static {v$reg}, $HELPER->$tintInject(Landroid/widget/ImageView;)V
                 """.trimIndent(),
             )
         }
