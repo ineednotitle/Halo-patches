@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -3337,6 +3337,34 @@
       "options": []
     },
     {
+      "name": "Remove tracking & analytics",
+      "description": "Kills Facebook auto-init and OneSignal, and opts Firebase Crashlytics/Performance/Analytics out of collection at boot, in Everything Widgets. Widget functionality is unaffected; OneSignal push notifications stop.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.jndapp.nothing.widgets.pack",
+          "name": "Everything Widgets",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0F0F0F",
+          "signatures": [
+            "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+          ],
+          "targets": [
+            {
+              "version": "2.1.014",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 31,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Server Auditor Premium",
       "description": "Unlocks Pro features by forcing the UserType mapper to always return UserType$Pro.",
       "default": true,
@@ -3360,6 +3388,34 @@
               },
               "isExperimental": false,
               "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Spoof Play Store signature",
+      "description": "Forces the Google license (Pairip) verdict branch to LICENSED and neutralizes the license payload's signature verification, so the patched/re-signed Everything Widgets build always passes store validation.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.jndapp.nothing.widgets.pack",
+          "name": "Everything Widgets",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0F0F0F",
+          "signatures": [
+            "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+          ],
+          "targets": [
+            {
+              "version": "2.1.014",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 31,
               "description": null
             }
           ]
@@ -5614,6 +5670,34 @@
               },
               "isExperimental": false,
               "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Bypasses the Google license (Pairip) purchase check of the paid Everything Widgets app: the app runs fully without a Play purchase. Donation SKUs are cosmetic and untouched.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.jndapp.nothing.widgets.pack",
+          "name": "Everything Widgets",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0F0F0F",
+          "signatures": [
+            "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+          ],
+          "targets": [
+            {
+              "version": "2.1.014",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 31,
               "description": null
             }
           ]

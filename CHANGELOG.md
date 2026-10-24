@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.3.1...v1.4.0) (2026-10-24)
+
+### ✨ New Features
+
+* Everything Widgets 2.1.014 — unlock premium, spoof Play signature, remove tracking ([21ae0e9](https://github.com/ineednotitle/doom-reddit-patches/commit/21ae0e95d4c71d9a4c829a0efc9789e35d37e630))
+
 ## [1.3.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.3.0...v1.3.1) (2026-10-23)
 
 ### 🐛 Bug Fixes

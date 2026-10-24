@@ -67,7 +67,7 @@ before an update.
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.3.1](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.3.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;324 patches total
+> **[v1.4.0](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;327 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -648,6 +648,23 @@ before an update.
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Remove ads](#remove-ads) | Disables LiveScore banner, native, and interstitial ad requests. |  |
+
+</details>
+
+<details>
+<summary>📦 Everything Widgets&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 🧪&nbsp;2.1.014 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Remove tracking & analytics](#remove-tracking-analytics) | Kills Facebook auto-init and OneSignal, and opts Firebase Crashlytics/Performance/Analytics out of collection at boot, in Everything Widgets. Widget functionality is unaffected; OneSignal push notifications stop. |  |
+| [Spoof Play Store signature](#spoof-play-store-signature) | Forces the Google license (Pairip) verdict branch to LICENSED and neutralizes the license payload's signature verification, so the patched/re-signed Everything Widgets build always passes store validation. |  |
+| [Unlock Premium](#unlock-premium) | Bypasses the Google license (Pairip) purchase check of the paid Everything Widgets app: the app runs fully without a Play purchase. Donation SKUs are cosmetic and untouched. |  |
 
 </details>
 
