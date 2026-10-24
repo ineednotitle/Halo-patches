@@ -67,7 +67,7 @@ before an update.
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.4.0](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;327 patches total
+> **[v1.4.1](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.4.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;327 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -278,8 +278,8 @@ before an update.
 
 **🎯 Supported versions:**
 
-| 32.18.0.300 |
-| :---: |
+| 32.18.0.300 | 32.19.0.300 |
+| :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|

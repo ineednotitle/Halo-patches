@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.4.0...v1.4.1) (2026-10-24)
+
+### 🐛 Bug Fixes
+
+* import missing AmazonHelper/AmazonUrls extension + fix darkmode register clobber + verify vs Amazon India 32.19.0.300 ([962c47d](https://github.com/ineednotitle/doom-reddit-patches/commit/962c47dad76867ffb7ed29aacacc51c2f471a7ea))
+
 ## [1.4.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.3.1...v1.4.0) (2026-10-24)
 
 ### ✨ New Features
