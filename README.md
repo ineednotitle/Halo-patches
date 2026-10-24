@@ -1,4 +1,4 @@
-# 👋🧩 Holopatch Patches
+# 👋🧩 Halo Patches
 
 > *One bundle, patches everywhere. A Morphe patch suite spanning 320+ apps.*
 
@@ -3634,7 +3634,7 @@ Morphe merges splits automatically.
    - `patches-<version>.mpp` (+ attestation)
    - `patches-bundle.json` ← the **remote patch source** for Morphe Manager
    - `patches-list.json`, `SHA256SUMS.txt`
-4. Users then add `https://github.com/YOU/holopatch-patches` as a patch
+4. Users then add `https://github.com/YOU/Halo-patches` as a patch
    source in Morphe Manager.
 
 ## 🛠 When Reddit updates and a patch breaks (fingerprint maintenance)

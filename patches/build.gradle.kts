@@ -2,7 +2,7 @@ group = "app.doom.reddit-patches"
 
 patches {
     about {
-        name = "Doom's Reddit Patches"
+        name = "Halo Patches"
         description = "New mask, same task. Doom's patches for Reddit and more."
         source = "https://github.com/ineednotitle/doom-reddit-patches"
         author = "ineednotitle"

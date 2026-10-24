@@ -1,4 +1,4 @@
-rootProject.name = "holopatch-patches"
+rootProject.name = "Halo-patches"
 
 pluginManagement {
     repositories {
