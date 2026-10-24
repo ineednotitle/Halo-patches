@@ -1,3 +1,9 @@
+## [1.6.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.0...v1.6.1) (2026-10-24)
+
+### 🐛 Bug Fixes
+
+* Nothing Launcher - add drawer icon so the app can be opened on other ROMs ([6932376](https://github.com/ineednotitle/doom-reddit-patches/commit/693237613f5eb0fd5a36132b14b03061b3b4e5d5))
+
 ## [1.6.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.5.0...v1.6.0) (2026-10-24)
 
 ### ✨ New Features
