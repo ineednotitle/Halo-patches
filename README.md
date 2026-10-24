@@ -204,22 +204,6 @@ to gradle/gradle@v9.7.0's own wrapper
 </details>
 
 <details>
-<summary>📦 Nothing Launcher&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 3.3.10 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Block analytics & data collection](#block-analytics-data-collection) | Stops Nothing Launcher from reporting device/ROM identifiers via Firebase Analytics: kills the ROM-version user-property upload and disables Google's automatic analytics collection (registrar removal). Push notifications keep working. |  |
-| [Universal Android compatibility](#universal-android-compatibility) | Lets Nothing Launcher install & run on non-Nothing ROMs (ColorOS, realme UI, ...) by lifting the Nothing-OS feature filter. Then set it as your Home app in system settings. |  |
-
-</details>
-
-<details>
 <summary>📦 DooFlix&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
@@ -666,21 +650,6 @@ to gradle/gradle@v9.7.0's own wrapper
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Server Auditor Premium](#server-auditor-premium) | Unlocks Pro features by forcing the UserType mapper to always return UserType$Pro. |  |
-
-</details>
-
-<details>
-<summary>📦 Nothing Widgets&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 3.4.1 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Universal Android compatibility](#universal-android-compatibility) | Lets Nothing Widgets install & run on non-Nothing ROMs (ColorOS, realme UI, ...): lifts the Nothing-OS feature gate, un-locks widget providers from the Nothing-launcher signature permission, and adds a launcher icon. |  |
 
 </details>
 
