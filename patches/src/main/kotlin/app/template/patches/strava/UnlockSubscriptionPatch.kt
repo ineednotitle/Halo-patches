@@ -44,7 +44,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 @Suppress("unused")
 val unlockSubscriptionPatch = bytecodePatch(
     name = "Unlock Premium",
-    description = "Unlocks Strava Premium features. Also re-enables password login after OTP.",
+    description = "Unlocks Strava Premium features.",
     default = true,
 ) {
     compatibleWith(STRAVA_COMPATIBILITY)
@@ -62,24 +62,5 @@ val unlockSubscriptionPatch = bytecodePatch(
             .directMethods
             .first { it.name == "<init>" && it.accessFlags and AccessFlags.PRIVATE.value != 0 }
             .addInstructions(0, "const/4 p3, 0x1")
-
-        // ── OTP / PASSWORD LOGIN ───────────────────────────────────────────────
-        //
-        // Stable non-obfuscated fingerprint — unchanged across versions.
-        // Returns true so the app falls through to password login rather than
-        // forcing OTP-only auth flow.
-        Fingerprint(
-            definingClass = "Lcom/strava/authorization/data/RequestOtpLogInNetworkResponse;",
-            name = "getUsePassword",
-            returnType = "Z",
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            parameters = emptyList(),
-        ).method.addInstructions(
-            0,
-            """
-                const/4 v0, 0x1
-                return v0
-            """.trimIndent(),
-        )
     }
 }
