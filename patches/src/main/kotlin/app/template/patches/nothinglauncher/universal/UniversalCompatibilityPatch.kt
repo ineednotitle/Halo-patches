@@ -18,6 +18,14 @@ import org.w3c.dom.Element
  * A launcher is a normal home-replacement app on any ROM; users then pick it
  * in system Home settings. Nothing-only card data (hearthstone ContentProviders)
  * flows in only when the (also patched) Nothing Widgets app is installed.
+ *
+ * Second move (added in 1.6.1 after on-device report): like AOSP Launcher3,
+ * Nothing Launcher's home activity declares categories HOME + DEFAULT +
+ * LAUNCHER_APP but NEVER LAUNCHER - so the app has no drawer icon on any
+ * launcher, and "open" taps from app lists/Settings run no intent (dead
+ * click). We append android.intent.category.LAUNCHER to the home activity's
+ * intent-filter, producing a normal drawer icon whose tap lands on the home
+ * surface (and prompts the default-homepicker on first use).
  */
 @Suppress("unused")
 val nothingLauncherUniversalPatch = resourcePatch(
@@ -42,6 +50,41 @@ val nothingLauncherUniversalPatch = resourcePatch(
             if (fixed == 0) throw Exception(
                 "expected <uses-feature com.nothing.feature.OS.V2_5_Beta2> in manifest - " +
                     "anchor missing in this build"
+            )
+
+            // Drawer icon: add LAUNCHER category next to the HOME category in the
+            // launcher's home activity (com.android.searchlauncher.SearchLauncher).
+            val activities = document.getElementsByTagName("activity")
+            var iconAdded = false
+            for (i in 0 until activities.length) {
+                val el = activities.item(i) as? Element ?: continue
+                if (el.getAttribute("android:name") != "com.android.searchlauncher.SearchLauncher") continue
+                val filters = el.getElementsByTagName("intent-filter")
+                for (j in 0 until filters.length) {
+                    val f = filters.item(j) as? Element ?: continue
+                    val cats = f.getElementsByTagName("category")
+                    var hasHome = false
+                    var hasLauncher = false
+                    for (k in 0 until cats.length) {
+                        val c = cats.item(k) as? Element ?: continue
+                        when (c.getAttribute("android:name")) {
+                            "android.intent.category.HOME" -> hasHome = true
+                            "android.intent.category.LAUNCHER" -> hasLauncher = true
+                        }
+                    }
+                    if (hasHome && !hasLauncher) {
+                        val launcher = document.createElement("category")
+                        launcher.setAttribute("android:name", "android.intent.category.LAUNCHER")
+                        f.appendChild(launcher)
+                        iconAdded = true
+                        break
+                    }
+                }
+                if (iconAdded) break
+            }
+            if (!iconAdded) throw Exception(
+                "SearchLauncher activity with HOME category not found for LAUNCHER-category " +
+                    "injection - anchor missing in this build"
             )
         }
     }
