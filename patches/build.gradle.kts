@@ -1,13 +1,13 @@
-group = "app.doom.reddit-patches"
+group = "app.Halo.patches"
 
 patches {
     about {
         name = "Halo Patches"
-        description = "New mask, same task. Doom's patches for Reddit and more."
-        source = "https://github.com/ineednotitle/doom-reddit-patches"
+        description = "One bundle, patches everywhere. 320+ apps."
+        source = "https://github.com/ineednotitle/Halo-patches"
         author = "ineednotitle"
         contact = "https://github.com/ineednotitle"
-        website = "https://morphe.software/add-source?github=ineednotitle/doom-reddit-patches"
+        website = "https://morphe.software/add-source?github=ineednotitle/Halo-patches"
         license = "GPLv3"
     }
 }
