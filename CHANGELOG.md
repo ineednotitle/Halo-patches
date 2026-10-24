@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.4.1...v1.5.0) (2026-10-24)
+
+### ✨ New Features
+
+* Nothing Widgets 3.4.1 - Universal Android compatibility (ColorOS/realme UI) ([561ba6b](https://github.com/ineednotitle/doom-reddit-patches/commit/561ba6b97eb5e7aeca48f80104a053378a1f20cd))
+
 ## [1.4.1](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.4.0...v1.4.1) (2026-10-24)
 
 ### 🐛 Bug Fixes

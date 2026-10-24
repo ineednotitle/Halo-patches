@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -3769,6 +3769,37 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Universal Android compatibility",
+      "description": "Lets Nothing Widgets install & run on non-Nothing ROMs (ColorOS, realme UI, ...): lifts the Nothing-OS feature gate, un-locks widget providers from the Nothing-launcher signature permission, and adds a launcher icon.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nothing.hearthstone",
+          "name": "Nothing Widgets",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.1",
+              "versionCodes": {
+                "ARM64_V8A": 3040101,
+                "ARMEABI_V7A": 3040101,
+                "X86_64": 3040101,
+                "X86": 3040101
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     },
     {
       "name": "Unlock Account Entitlements",

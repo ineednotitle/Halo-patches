@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.4.1](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.4.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;327 patches total
+> **[v1.5.0](https://github.com/ineednotitle/doom-reddit-patches/releases/tag/v1.5.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;328 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -650,6 +650,21 @@ to gradle/gradle@v9.7.0's own wrapper
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Server Auditor Premium](#server-auditor-premium) | Unlocks Pro features by forcing the UserType mapper to always return UserType$Pro. |  |
+
+</details>
+
+<details>
+<summary>📦 Nothing Widgets&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.4.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Universal Android compatibility](#universal-android-compatibility) | Lets Nothing Widgets install & run on non-Nothing ROMs (ColorOS, realme UI, ...): lifts the Nothing-OS feature gate, un-locks widget providers from the Nothing-launcher signature permission, and adds a launcher icon. |  |
 
 </details>
 
