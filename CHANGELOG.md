@@ -1,3 +1,9 @@
+## [1.6.3](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.2...v1.6.3) (2026-10-24)
+
+### 🐛 Bug Fixes
+
+* rebrand to Holopatch Patches ([5f60331](https://github.com/ineednotitle/doom-reddit-patches/commit/5f60331de6007e2a38e0d1d683421fd5ec62ca9f))
+
 ## [1.6.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.1...v1.6.2) (2026-10-24)
 
 ### 🐛 Bug Fixes

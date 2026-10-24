@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-24T10:58:48",
-  "description": "## [1.6.2](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.1...v1.6.2) (2026-10-24)\n\n### 🐛 Bug Fixes\n\n* remove Nothing Launcher and Nothing Widgets patches ([9c3a6d8](https://github.com/ineednotitle/doom-reddit-patches/commit/9c3a6d81d7718a538068ce052089f8a472d7cee4))",
-  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.6.2/patches-1.6.2.mpp",
+  "created_at": "2026-10-24T11:28:46",
+  "description": "## [1.6.3](https://github.com/ineednotitle/doom-reddit-patches/compare/v1.6.2...v1.6.3) (2026-10-24)\n\n### 🐛 Bug Fixes\n\n* rebrand to Holopatch Patches ([5f60331](https://github.com/ineednotitle/doom-reddit-patches/commit/5f60331de6007e2a38e0d1d683421fd5ec62ca9f))",
+  "download_url": "https://github.com/ineednotitle/doom-reddit-patches/releases/download/v1.6.3/patches-1.6.3.mpp",
   "signature_download_url": "",
-  "version": "1.6.2"
+  "version": "1.6.3"
 }
