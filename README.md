@@ -1,9 +1,9 @@
-# 👋🧩 Doom's Reddit Patches
+# 👋🧩 Holopatch Patches
 
-> *New mask, same task. Doom's patches for the Reddit app.*
+> *One bundle, patches everywhere. A Morphe patch suite spanning 320+ apps.*
 
-A **Morphe patch bundle** for `com.reddit.frontpage`, built by cloning the exact
-recipe used by [rushiranpise/morphe-patches](https://github.com/rushiranpise/morphe-patches)
+A **Morphe patch bundle** spanning 320+ apps (grown from a `com.reddit.frontpage`
+recipe), built by cloning the exact recipe from [rushiranpise/morphe-patches](https://github.com/rushiranpise/morphe-patches)
 ("Doom's Morphe Patches") — which itself is generated from the official
 [morphe-patches-template](https://github.com/MorpheApp/morphe-patches-template).
 See [ANALYSIS.md](ANALYSIS.md) for the full teardown of Doom's method.
@@ -3633,7 +3633,7 @@ Morphe merges splits automatically.
    - `patches-<version>.mpp` (+ attestation)
    - `patches-bundle.json` ← the **remote patch source** for Morphe Manager
    - `patches-list.json`, `SHA256SUMS.txt`
-4. Users then add `https://github.com/YOU/doom-reddit-patches` as a patch
+4. Users then add `https://github.com/YOU/holopatch-patches` as a patch
    source in Morphe Manager.
 
 ## 🛠 When Reddit updates and a patch breaks (fingerprint maintenance)

@@ -1,4 +1,4 @@
-rootProject.name = "doom-reddit-patches"
+rootProject.name = "holopatch-patches"
 
 pluginManagement {
     repositories {
@@ -21,6 +21,7 @@ pluginManagement {
 plugins {
     // The Morphe patches plugin. It auto-includes the `patches` and
     // `extensions/extension` modules and provides the `buildAndroid` task
-    // that produces patches-*.mpp. (Same version Doom uses.)
+    // that produces patches-*.mpp (Holopatch Patches bundle).
+    // Forked lineage: Doom's Morphe Patches recipe.
     id("app.morphe.patches") version "1.3.3"
 }
