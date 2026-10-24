@@ -1059,6 +1059,14 @@ val NINJVAPN_COMPATIBILITY = Compatibility(
         targets = listOf(AppTarget(version = "1.4.7", versionCode = 44))
     )
 
+val NOTHING_WIDGETS_COMPATIBILITY = Compatibility(
+        name = "Nothing Widgets",
+        packageName = "com.nothing.hearthstone",
+        appIconColor = 0x000000,
+        apkFileType = ApkFileType.APKS,
+        targets = listOf(AppTarget(version = "3.4.1", versionCode = 3040101))
+    )
+
 val NOVA_LAUNCHER_COMPATIBILITY = Compatibility(
         name = "Nova Launcher",
         packageName = "com.teslacoilsw.launcher",
