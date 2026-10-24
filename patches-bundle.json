@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-24T12:12:43",
-  "description": "## [1.6.4](https://github.com/ineednotitle/Halo-patches/compare/v1.6.3...v1.6.4) (2026-10-24)\n\n### 🐛 Bug Fixes\n\n* Strava login/join broken by forced password-only flag - split OTP bypass into opt-in patch ([caa9584](https://github.com/ineednotitle/Halo-patches/commit/caa9584f7db560ce1d8a19f87980af97cf577dd5))",
-  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.6.4/patches-1.6.4.mpp",
+  "created_at": "2026-10-24T12:42:59",
+  "description": "## [1.6.5](https://github.com/ineednotitle/Halo-patches/compare/v1.6.4...v1.6.5) (2026-10-24)\n\n### 🐛 Bug Fixes\n\n* align bundle display name with the Halo-patches repo rename ([6f1bc90](https://github.com/ineednotitle/Halo-patches/commit/6f1bc90e8fa74b0bb69a7238dad76c30dc19ef0e))\n* finish Halo Patches rebrand of bundle metadata (group/source/website/description) ([ae43935](https://github.com/ineednotitle/Halo-patches/commit/ae43935ec9222d9c87b0d89c4f3acddad6194005))",
+  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.6.5/patches-1.6.5.mpp",
   "signature_download_url": "",
-  "version": "1.6.4"
+  "version": "1.6.5"
 }

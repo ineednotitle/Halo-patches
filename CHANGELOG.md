@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/ineednotitle/Halo-patches/compare/v1.6.4...v1.6.5) (2026-10-24)
+
+### 🐛 Bug Fixes
+
+* align bundle display name with the Halo-patches repo rename ([6f1bc90](https://github.com/ineednotitle/Halo-patches/commit/6f1bc90e8fa74b0bb69a7238dad76c30dc19ef0e))
+* finish Halo Patches rebrand of bundle metadata (group/source/website/description) ([ae43935](https://github.com/ineednotitle/Halo-patches/commit/ae43935ec9222d9c87b0d89c4f3acddad6194005))
+
 ## [1.6.4](https://github.com/ineednotitle/Halo-patches/compare/v1.6.3...v1.6.4) (2026-10-24)
 
 ### 🐛 Bug Fixes
