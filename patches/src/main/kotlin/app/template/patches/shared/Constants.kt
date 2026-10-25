@@ -1513,6 +1513,14 @@ val STRAVA_COMPATIBILITY = Compatibility(
         )
     )
 
+val FIREFOX_COMPATIBILITY = Compatibility(
+        name = "Firefox",
+        packageName = "org.mozilla.firefox",
+        apkFileType = ApkFileType.APK,
+        appIconColor = 0xE66000,
+        targets = listOf(AppTarget(version = "158.0.2", versionCode = 2016191575))
+    )
+
 val SUBWAYNOW_COMPATIBILITY = Compatibility(
         name = "Subway Now",
         packageName = "io.goodservice.theweekendest",
