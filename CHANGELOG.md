@@ -1,3 +1,9 @@
+## [1.8.2](https://github.com/ineednotitle/Halo-patches/compare/v1.8.1...v1.8.2) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* Firefox privacy patch also forces telemetry settings OFF ([980a911](https://github.com/ineednotitle/Halo-patches/commit/980a911dd898c696546e67bb4a6bd8347e2df3e6))
+
 ## [1.8.1](https://github.com/ineednotitle/Halo-patches/compare/v1.8.0...v1.8.1) (2026-10-25)
 
 ### 🐛 Bug Fixes
