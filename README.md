@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.6.5](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.6.5)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;328 patches total
+> **[v1.7.0](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.7.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;329 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -204,6 +204,23 @@ to gradle/gradle@v9.7.0's own wrapper
 </details>
 
 <details>
+<summary>📦 Strava&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 480.15 | 486.9 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Block analytics and data collection](#block-analytics-and-data-collection) | Stops Strava's Braze telemetry bootstrap (session + engagement tracking, endpoint sdk.iad-07.braze.com) before it is configured. Firebase Analytics collection and Facebook auto event logging are already off in Strava's own manifest; this removes the one tracker pipe that is actually live. Push, GPS, and recording keep working. |  |
+| [Force password login (OTP bypass)](#force-password-login-otp-bypass) | Always shows the password login field instead of the OTP code flow. OFF by default: breaks log-in AND sign-up for OTP-only accounts. Enable only if your Strava account has an actual password. |  |
+| [Unlock Premium](#unlock-premium) | Unlocks Strava Premium features. |  |
+
+</details>
+
+<details>
 <summary>📦 DooFlix&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
@@ -328,22 +345,6 @@ to gradle/gradle@v9.7.0's own wrapper
 |----------|----------------|-----------|
 | [Disable telemetry](#disable-telemetry) | Disables CamScanner's custom telemetry/log-agent system. |  |
 | [Unlock Yearly](#unlock-yearly) | Unlocks premium features without login. Note: Login Won't Work |  |
-
-</details>
-
-<details>
-<summary>📦 Strava&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 480.15 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Force password login (OTP bypass)](#force-password-login-otp-bypass) | Always shows the password login field instead of the OTP code flow. OFF by default: breaks log-in AND sign-up for OTP-only accounts. Enable only if your Strava account has an actual password. |  |
-| [Unlock Premium](#unlock-premium) | Unlocks Strava Premium features. |  |
 
 </details>
 

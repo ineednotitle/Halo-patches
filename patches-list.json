@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.6.5",
+  "version": "1.7.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -378,6 +378,49 @@
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 32,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block analytics and data collection",
+      "description": "Stops Strava's Braze telemetry bootstrap (session + engagement tracking, endpoint sdk.iad-07.braze.com) before it is configured. Firebase Analytics collection and Facebook auto event logging are already off in Strava's own manifest; this removes the one tracker pipe that is actually live. Push, GPS, and recording keep working.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.strava",
+          "name": "Strava",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#FC4C02",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "480.15",
+              "versionCodes": {
+                "ARM64_V8A": 12399564,
+                "ARMEABI_V7A": 12399564,
+                "X86_64": 12399564,
+                "X86": 12399564
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "486.9",
+              "versionCodes": {
+                "ARM64_V8A": 12400193,
+                "ARMEABI_V7A": 12400193,
+                "X86_64": 12400193,
+                "X86": 12400193
+              },
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]
@@ -1826,6 +1869,18 @@
                 "ARMEABI_V7A": 12399564,
                 "X86_64": 12399564,
                 "X86": 12399564
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "486.9",
+              "versionCodes": {
+                "ARM64_V8A": 12400193,
+                "ARMEABI_V7A": 12400193,
+                "X86_64": 12400193,
+                "X86": 12400193
               },
               "isExperimental": false,
               "minSdk": null,
@@ -7510,6 +7565,18 @@
                 "ARMEABI_V7A": 12399564,
                 "X86_64": 12399564,
                 "X86": 12399564
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "486.9",
+              "versionCodes": {
+                "ARM64_V8A": 12400193,
+                "ARMEABI_V7A": 12400193,
+                "X86_64": 12400193,
+                "X86": 12400193
               },
               "isExperimental": false,
               "minSdk": null,

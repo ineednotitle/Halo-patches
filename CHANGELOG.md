@@ -1,3 +1,9 @@
+## [1.7.0](https://github.com/ineednotitle/Halo-patches/compare/v1.6.5...v1.7.0) (2026-10-25)
+
+### ✨ New Features
+
+* Strava privacy patch (Block analytics and data collection) + 486.9 target ([0885c91](https://github.com/ineednotitle/Halo-patches/commit/0885c914d33e55dbec5e6f560183bf0331780d4e))
+
 ## [1.6.5](https://github.com/ineednotitle/Halo-patches/compare/v1.6.4...v1.6.5) (2026-10-24)
 
 ### 🐛 Bug Fixes
