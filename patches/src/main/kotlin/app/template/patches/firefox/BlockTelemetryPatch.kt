@@ -4,6 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.template.patches.shared.Constants.FIREFOX_COMPATIBILITY
+import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
  * Shrinks Firefox for Android (Fenix) to a strictly privacy-focused browser by
@@ -20,6 +21,12 @@ import app.template.patches.shared.Constants.FIREFOX_COMPATIBILITY
  *   backend is never configured, so nothing can be reported.
  * - Adjust marketing attribution (AdjustMetricsService.start): install and
  *   activation attribution never start.
+ * - Telemetry preference getters (Settings.isTelemetryEnabled /
+ *   isMarketingTelemetryEnabled / isExperimentationEnabled) are forced to
+ *   false, so the "Data collection and privacy" toggles in Settings actually
+ *   read OFF and every code path gated on them takes the off-branch.
+ *   (Initial version only killed the pipelines at init, which truly stops all
+ *   outbound telemetry but left the toggles displaying their stale state.)
  *
  * Browsing, Sync, add-ons, and all browser features are untouched. All
  * fingerprints are Mozilla's public, non-obfuscated class names and matching
@@ -30,7 +37,8 @@ import app.template.patches.shared.Constants.FIREFOX_COMPATIBILITY
 val blockTelemetryPatch = bytecodePatch(
     name = "Block Firefox telemetry",
     description = "Never initializes Glean telemetry, Nimbus experiments, Sentry crash reporting, or Adjust " +
-        "marketing attribution at startup. Browsing, Sync, add-ons and all features keep working.",
+        "marketing attribution at startup, and makes the telemetry toggles in Settings read OFF. " +
+        "Browsing, Sync, add-ons and all features keep working.",
     default = true,
 ) {
     compatibleWith(FIREFOX_COMPATIBILITY)
@@ -72,5 +80,28 @@ val blockTelemetryPatch = bytecodePatch(
             returnType = "V",
             parameters = emptyList(),
         ).method.addInstructions(0, "return-void")
+
+        // Telemetry preference getters -> false, so the Settings > "Data
+        // collection and privacy" toggles read OFF and every gated code path
+        // takes the off-branch on top of the init kills above.
+        listOf(
+            "isTelemetryEnabled",            // Technical and interaction data
+            "isMarketingTelemetryEnabled",   // Marketing data (Adjust): any code path that checks it
+            "isExperimentationEnabled",      // Studies / experiments (Nimbus)
+        ).forEach { getter ->
+            Fingerprint(
+                definingClass = "Lorg/mozilla/fenix/utils/Settings;",
+                name = getter,
+                returnType = "Z",
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                parameters = emptyList(),
+            ).method.addInstructions(
+                0,
+                """
+                    const/4 v0, 0x0
+                    return v0
+                """.trimIndent(),
+            )
+        }
     }
 }
