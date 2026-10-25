@@ -23,7 +23,8 @@ import app.template.patches.shared.Constants.PINTEREST_COMPATIBILITY
  * position), never on formatting of existing instruction text - register
  * rendering differs between apktool smali dumps and dexlib2 dumping, which
  * is what burned v1.10.0/v1.10.1's middle-of-method locator. Verified pins:
- * registers v1/v2/v3/v5 are dead at method end, the whole block fits locals.
+ * registers v1/v2/v3/v5 are dead at method end and each carries exactly one
+type (v1/v5 objects, v2/v3 ints) so no verifier merge conflicts can arise.
  * Verified against 14.41.0 (vc 14418020).
  */
 @Suppress("unused")
@@ -61,8 +62,8 @@ val removePromotedPinsPatch = bytecodePatch(
                     move-result-object v5
                     if-eqz v5, :halo_filter_next
                     invoke-virtual { v5 }, Ljava/lang/Boolean;->booleanValue()Z
-                    move-result v5
-                    if-nez v5, :halo_filter_next
+                    move-result v2
+                    if-nez v2, :halo_filter_next
                     invoke-interface { v0, v3 }, Ljava/util/List;->remove(I)Ljava/lang/Object;
                     goto :halo_filter_loop
                     :halo_filter_next
