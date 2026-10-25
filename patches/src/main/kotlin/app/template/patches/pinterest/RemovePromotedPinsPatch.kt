@@ -49,8 +49,6 @@ val removePromotedPinsPatch = bytecodePatch(
             addInstructions(
                 instructionCount - 1, // before return-object v0 (v0 = the pin list)
                 """
-                    # Remove entries whose pin.is_promoted flag is TRUE.
-                    # v0 = List<pin>; v3 = index i; v1 = pin item; v5 = promoted flag.
                     const/4 v3, 0x0
                     :halo_filter_loop
                     invoke-interface { v0 }, Ljava/util/List;->size()I
