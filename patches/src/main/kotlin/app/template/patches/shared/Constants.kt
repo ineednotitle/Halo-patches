@@ -1507,7 +1507,10 @@ val STRAVA_COMPATIBILITY = Compatibility(
         packageName = "com.strava",
         apkFileType = ApkFileType.APKS,
         appIconColor = 0xFC4C02,
-        targets = listOf(AppTarget(version = "480.15", versionCode = 12399564))
+        targets = listOf(
+            AppTarget(version = "480.15", versionCode = 12399564),
+            AppTarget(version = "486.9", versionCode = 12400193),
+        )
     )
 
 val SUBWAYNOW_COMPATIBILITY = Compatibility(
