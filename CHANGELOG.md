@@ -1,3 +1,9 @@
+## [1.8.1](https://github.com/ineednotitle/Halo-patches/compare/v1.8.0...v1.8.1) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* release workflow - shim git to skip semantic-release notes push ([c992487](https://github.com/ineednotitle/Halo-patches/commit/c99248766603bc6131ade2d3fdeed6d2f44f803b))
+
 ## [1.8.0](https://github.com/ineednotitle/Halo-patches/compare/v1.7.0...v1.8.0) (2026-10-25)
 
 ### ✨ New Features
