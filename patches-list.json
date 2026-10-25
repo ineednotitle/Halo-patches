@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.8.2",
+  "version": "1.9.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -359,7 +359,7 @@
     },
     {
       "name": "Block Firefox telemetry",
-      "description": "Never initializes Glean telemetry, Nimbus experiments, Sentry crash reporting, or Adjust marketing attribution at startup, and makes the telemetry toggles in Settings read OFF. Browsing, Sync, add-ons and all features keep working.",
+      "description": "IronFox-style hardening: never initializes Glean telemetry, Nimbus experiments, Sentry crash reporting, or Adjust attribution at startup; kills Mozilla-side server traffic during browsing (Firefox Suggest/Merino, sponsored shortcuts/Contile, Pocket feed + sponsored stories, search suggestion streaming incl. private tabs, studies previews); and makes the telemetry toggles in Settings read OFF. Browsing, Sync and add-ons keep working; local-only suggestions untouched.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

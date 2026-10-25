@@ -1,3 +1,9 @@
+## [1.9.0](https://github.com/ineednotitle/Halo-patches/compare/v1.8.2...v1.9.0) (2026-10-25)
+
+### ✨ New Features
+
+* Firefox telemetry patch - IronFox-style coverage of browsing-era server traffic ([0b90477](https://github.com/ineednotitle/Halo-patches/commit/0b904778087bec9cdd7d5921b3cf008c4125cc62))
+
 ## [1.8.2](https://github.com/ineednotitle/Halo-patches/compare/v1.8.1...v1.8.2) (2026-10-25)
 
 ### 🐛 Bug Fixes
