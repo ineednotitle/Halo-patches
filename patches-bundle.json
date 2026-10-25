@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-25T17:33:08",
-  "description": "## [1.10.5](https://github.com/ineednotitle/Halo-patches/compare/v1.10.4...v1.10.5) (2026-10-25)\n\n### 🐛 Bug Fixes\n\n* Pinterest analytics - drop AF start() kill (caused launch crash) ([d7f4f5b](https://github.com/ineednotitle/Halo-patches/commit/d7f4f5bd24b3b27e634f3d8318047260996c7ff6))",
-  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.10.5/patches-1.10.5.mpp",
+  "created_at": "2026-10-25T18:20:55",
+  "description": "## [1.10.6](https://github.com/ineednotitle/Halo-patches/compare/v1.10.5...v1.10.6) (2026-10-25)\n\n### 🐛 Bug Fixes\n\n* Pinterest ad-free - full-body rewrite via clearBody (device-crash forensics) ([d49b7e9](https://github.com/ineednotitle/Halo-patches/commit/d49b7e96fdd3a3bad5559b40dc7716806238d7e1))",
+  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.10.6/patches-1.10.6.mpp",
   "signature_download_url": "",
-  "version": "1.10.5"
+  "version": "1.10.6"
 }

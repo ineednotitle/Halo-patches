@@ -1,3 +1,9 @@
+## [1.10.6](https://github.com/ineednotitle/Halo-patches/compare/v1.10.5...v1.10.6) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* Pinterest ad-free - full-body rewrite via clearBody (device-crash forensics) ([d49b7e9](https://github.com/ineednotitle/Halo-patches/commit/d49b7e96fdd3a3bad5559b40dc7716806238d7e1))
+
 ## [1.10.5](https://github.com/ineednotitle/Halo-patches/compare/v1.10.4...v1.10.5) (2026-10-25)
 
 ### 🐛 Bug Fixes
