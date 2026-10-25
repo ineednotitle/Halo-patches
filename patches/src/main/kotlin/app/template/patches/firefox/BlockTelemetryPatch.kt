@@ -28,6 +28,19 @@ import com.android.tools.smali.dexlib2.AccessFlags
  *   (Initial version only killed the pipelines at init, which truly stops all
  *   outbound telemetry but left the toggles displaying their stale state.)
  *
+ * IronFox-style feature hardening on top (the remaining Mozilla-side server
+ * round-trips reachable from Fenix-level prefs, all getter-forced OFF, i.e.
+ * anything that sends data to Mozilla/Pocket/Merino while browsing):
+ * isDailyUsagePingEnabled (usage ping scheduling), getEnableFxSuggest and
+ * getShowSponsored/NonSponsoredSuggestions (Firefox Suggest/Merino traffic
+ * while typing), getShowContileFeature (sponsored top-sites ad service),
+ * getShowPocketRecommendationsFeature and getShowPocketSponsoredStories
+ * (Pocket feed + sponsored stories fetches on the home screen),
+ * getShouldShowSearchSuggestions and getShouldShowSearchSuggestionsInPrivate
+ * (typed text streamed to the search engine), and getNimbusUsePreview
+ * (experiment preview enrollments). Purely LOCAL suggestion types (clipboard,
+ * bookmarks, synced tabs - device DB only, no server calls) stay enabled.
+ *
  * Browsing, Sync, add-ons, and all browser features are untouched. All
  * fingerprints are Mozilla's public, non-obfuscated class names and matching
  * is fail-open: if Mozilla renames one of them, that call simply stays and
@@ -36,9 +49,11 @@ import com.android.tools.smali.dexlib2.AccessFlags
 @Suppress("unused")
 val blockTelemetryPatch = bytecodePatch(
     name = "Block Firefox telemetry",
-    description = "Never initializes Glean telemetry, Nimbus experiments, Sentry crash reporting, or Adjust " +
-        "marketing attribution at startup, and makes the telemetry toggles in Settings read OFF. " +
-        "Browsing, Sync, add-ons and all features keep working.",
+    description = "IronFox-style hardening: never initializes Glean telemetry, Nimbus experiments, Sentry crash " +
+        "reporting, or Adjust attribution at startup; kills Mozilla-side server traffic during browsing " +
+        "(Firefox Suggest/Merino, sponsored shortcuts/Contile, Pocket feed + sponsored stories, search " +
+        "suggestion streaming incl. private tabs, studies previews); and makes the telemetry toggles in " +
+        "Settings read OFF. Browsing, Sync and add-ons keep working; local-only suggestions untouched.",
     default = true,
 ) {
     compatibleWith(FIREFOX_COMPATIBILITY)
@@ -85,9 +100,21 @@ val blockTelemetryPatch = bytecodePatch(
         // collection and privacy" toggles read OFF and every gated code path
         // takes the off-branch on top of the init kills above.
         listOf(
+            // Telemetry toggles (Settings > Data collection and privacy)
             "isTelemetryEnabled",            // Technical and interaction data
             "isMarketingTelemetryEnabled",   // Marketing data (Adjust): any code path that checks it
             "isExperimentationEnabled",      // Studies / experiments (Nimbus)
+            // IronFox-style server round-trips behind Fenix prefs
+            "isDailyUsagePingEnabled",               // daily usage ping scheduling
+            "getEnableFxSuggest",                    // Firefox Suggest (Merino) master switch
+            "getShowSponsoredSuggestions",           // sponsored Suggest entries
+            "getShowNonSponsoredSuggestions",        // non-sponsored Merino entries (still server traffic)
+            "getShowContileFeature",                 // sponsored top-sites ad service
+            "getShowPocketRecommendationsFeature",   // Pocket home feed fetch
+            "getShowPocketSponsoredStories",         // sponsored Pocket stories
+            "getShouldShowSearchSuggestions",        // typed text streamed to search engine
+            "getShouldShowSearchSuggestionsInPrivate",// ...including private tabs
+            "getNimbusUsePreview",                   // experiment preview enrollments
         ).forEach { getter ->
             Fingerprint(
                 definingClass = "Lorg/mozilla/fenix/utils/Settings;",
