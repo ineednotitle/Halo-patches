@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-25T15:52:35",
-  "description": "## [1.10.0](https://github.com/ineednotitle/Halo-patches/compare/v1.9.0...v1.10.0) (2026-10-25)\n\n### ✨ New Features\n\n* Pinterest patches (14.41.0) - ad-free feed, analytics kill, media downloads ([b604626](https://github.com/ineednotitle/Halo-patches/commit/b604626d0e0f68df05b845e6a93fc959b2396f3f))",
-  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.10.0/patches-1.10.0.mpp",
+  "created_at": "2026-10-25T16:00:57",
+  "description": "## [1.10.1](https://github.com/ineednotitle/Halo-patches/compare/v1.10.0...v1.10.1) (2026-10-25)\n\n### 🐛 Bug Fixes\n\n* Pinterest ad-free patch - List.add locator not found ([ae55f2f](https://github.com/ineednotitle/Halo-patches/commit/ae55f2fb07fb9126376f9cb5b30434a3201bd733))",
+  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.10.1/patches-1.10.1.mpp",
   "signature_download_url": "",
-  "version": "1.10.0"
+  "version": "1.10.1"
 }

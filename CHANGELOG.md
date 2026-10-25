@@ -1,3 +1,9 @@
+## [1.10.1](https://github.com/ineednotitle/Halo-patches/compare/v1.10.0...v1.10.1) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* Pinterest ad-free patch - List.add locator not found ([ae55f2f](https://github.com/ineednotitle/Halo-patches/commit/ae55f2fb07fb9126376f9cb5b30434a3201bd733))
+
 ## [1.10.0](https://github.com/ineednotitle/Halo-patches/compare/v1.9.0...v1.10.0) (2026-10-25)
 
 ### ✨ New Features
