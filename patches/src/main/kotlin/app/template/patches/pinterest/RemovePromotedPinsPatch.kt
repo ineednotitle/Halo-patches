@@ -42,8 +42,10 @@ val removePromotedPinsPatch = bytecodePatch(
 
         method.apply {
             // Locate the List.add(v0, v4) that appends each parsed pin.
+            // NOTE: dexlib2 toString() renders registers without apktook spacing,
+            // so match on the method signature fragment only (unique here).
             val addIndex = implementation!!.instructions.indexOfFirst {
-                it.toString().contains("invoke-interface { v0, v4 }, Ljava/util/List;->add")
+                it.toString().contains("Ljava/util/List;->add(Ljava/lang/Object;)Z")
             }
             require(addIndex >= 0) { "PinDeserializer.a(): List.add not found" }
 
@@ -64,7 +66,7 @@ val removePromotedPinsPatch = bytecodePatch(
 
             // The original List.add shifted right; land the skip label after it.
             val addIndexNow = implementation!!.instructions.indexOfFirst {
-                it.toString().contains("invoke-interface { v0, v4 }, Ljava/util/List;->add")
+                it.toString().contains("Ljava/util/List;->add(Ljava/lang/Object;)Z")
             }
             addInstructions(addIndexNow + 1, ":halo_skip_pin")
         }
