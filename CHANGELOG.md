@@ -1,3 +1,9 @@
+## [1.10.4](https://github.com/ineednotitle/Halo-patches/compare/v1.10.3...v1.10.4) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* Pinterest ad-free - type-stable registers (device startup crash fix) ([11e86d9](https://github.com/ineednotitle/Halo-patches/commit/11e86d9fb527c18725377699fc4eaedd3b17d7c7))
+
 ## [1.10.3](https://github.com/ineednotitle/Halo-patches/compare/v1.10.2...v1.10.3) (2026-10-25)
 
 ### 🐛 Bug Fixes

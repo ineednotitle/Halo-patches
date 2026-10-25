@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-25T16:46:32",
-  "description": "## [1.10.3](https://github.com/ineednotitle/Halo-patches/compare/v1.10.2...v1.10.3) (2026-10-25)\n\n### 🐛 Bug Fixes\n\n* Pinterest analytics patch targets verified against real 14.41.0 binaries ([d332b41](https://github.com/ineednotitle/Halo-patches/commit/d332b4182c8c3747d75d08bc14e14f396d40fdf3))",
-  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.10.3/patches-1.10.3.mpp",
+  "created_at": "2026-10-25T17:00:25",
+  "description": "## [1.10.4](https://github.com/ineednotitle/Halo-patches/compare/v1.10.3...v1.10.4) (2026-10-25)\n\n### 🐛 Bug Fixes\n\n* Pinterest ad-free - type-stable registers (device startup crash fix) ([11e86d9](https://github.com/ineednotitle/Halo-patches/commit/11e86d9fb527c18725377699fc4eaedd3b17d7c7))",
+  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.10.4/patches-1.10.4.mpp",
   "signature_download_url": "",
-  "version": "1.10.3"
+  "version": "1.10.4"
 }
