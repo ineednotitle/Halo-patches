@@ -1,3 +1,9 @@
+## [1.10.0](https://github.com/ineednotitle/Halo-patches/compare/v1.9.0...v1.10.0) (2026-10-25)
+
+### ✨ New Features
+
+* Pinterest patches (14.41.0) - ad-free feed, analytics kill, media downloads ([b604626](https://github.com/ineednotitle/Halo-patches/commit/b604626d0e0f68df05b845e6a93fc959b2396f3f))
+
 ## [1.9.0](https://github.com/ineednotitle/Halo-patches/compare/v1.8.2...v1.9.0) (2026-10-25)
 
 ### ✨ New Features

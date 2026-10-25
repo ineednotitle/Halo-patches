@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.9.0](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.9.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;331 patches total
+> **[v1.10.0](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.10.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;334 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -72,6 +72,23 @@ to gradle/gradle@v9.7.0's own wrapper
 | [Fix DCIM folder classification](#fix-dcim-folder-classification) | Prevents non-Camera DCIM folders from being grouped as Camera. |  |
 | [GmsCore support](#gmscore-support) | Adds MicroG/GmsCore support metadata for Google Photos. |  |
 | [Spoof features](#spoof-features) | Spoofs selectable Pixel Photos build and feature flags. | • Pixel profile<br>• Android version<br>• Override ROM feature levels |
+
+</details>
+
+<details>
+<summary>📦 Pinterest&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 14.41.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Ad-free feed (remove promoted Pins)](#ad-free-feed-remove-promoted-pins) | Filters promoted/sponsored Pins out of every feed, search result, and board list at the deserialization choke point, before they ever render. Organic pinning, boards and saving are unaffected. |  |
+| [Block analytics and data collection](#block-analytics-and-data-collection) | Turns Firebase Analytics and AppsFlyer calls into no-ops: no event logging, no install/activation attribution, no collection toggling. Push notifications keep working; Pinterest's own features are untouched. |  |
+| [Enable media downloads](#enable-media-downloads) | Forces the pin-level download eligibility flag so the Download action is available on every Pin (images and videos). |  |
 
 </details>
 

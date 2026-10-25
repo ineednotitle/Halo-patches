@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -85,6 +85,37 @@
                 "ARMEABI_V7A": 52547203,
                 "X86_64": 52547203,
                 "X86": 52547203
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Ad-free feed (remove promoted Pins)",
+      "description": "Filters promoted/sponsored Pins out of every feed, search result, and board list at the deserialization choke point, before they ever render. Organic pinning, boards and saving are unaffected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.41.0",
+              "versionCodes": {
+                "ARM64_V8A": 14418020,
+                "ARMEABI_V7A": 14418020,
+                "X86_64": 14418020,
+                "X86": 14418020
               },
               "isExperimental": false,
               "minSdk": null,
@@ -409,6 +440,37 @@
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 32,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block analytics and data collection",
+      "description": "Turns Firebase Analytics and AppsFlyer calls into no-ops: no event logging, no install/activation attribution, no collection toggling. Push notifications keep working; Pinterest's own features are untouched.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.41.0",
+              "versionCodes": {
+                "ARM64_V8A": 14418020,
+                "ARMEABI_V7A": 14418020,
+                "X86_64": 14418020,
+                "X86": 14418020
+              },
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]
@@ -1763,6 +1825,37 @@
               "versionCodes": {
                 "ARMEABI_V7A": 345212666,
                 "ARM64_V8A": 345212670
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable media downloads",
+      "description": "Forces the pin-level download eligibility flag so the Download action is available on every Pin (images and videos).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.41.0",
+              "versionCodes": {
+                "ARM64_V8A": 14418020,
+                "ARMEABI_V7A": 14418020,
+                "X86_64": 14418020,
+                "X86": 14418020
               },
               "isExperimental": false,
               "minSdk": null,
