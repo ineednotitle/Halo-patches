@@ -10,24 +10,28 @@ import app.template.patches.shared.Constants.PINTEREST_COMPATIBILITY
  * results, related pins and boards, tagged with the server flag
  * "is_promoted". Every pin list Pinterest shows is assembled in exactly one
  * place: PinDeserializer.a(...) iterates the response array, keeps items of
- * type "pin", parses each into a pin model and List.add()s it.
+ * type "pin", parses each into a pin model and returns the list.
  *
- * This patch inserts a guard right before that List.add: if the pin's
- * is_promoted flag resolves to Boolean.TRUE, the pin is skipped and never
- * enters any list — so no promoted pin is ever laid out, rendered or clicked.
- * Pins whose flag is absent (organic content, the common case) pass through.
- * The single-pin closeup path (method f) is deliberately not touched, so
- * opening a Pin link directly still works.
+ * This patch appends a self-contained filter loop right before the method's
+ * single return: any entry whose is_promoted flag resolves to Boolean.TRUE
+ * is removed from the returned list, so promoted pins are never laid out,
+ * rendered or clicked anywhere. Pins whose flag is absent (organic content,
+ * the common case) pass through. The single-pin closeup path (method f is
+ * deliberately not touched, so opening a Pin link directly still works.
  *
- * Verified against 14.41.0 (apkmirror universal APK, vc 14418020); the
- * deserializer package/class names are Pinterest-public and stable.
+ * The insertion anchors ONLY on "the instruction before return" (a fixed
+ * position), never on formatting of existing instruction text - register
+ * rendering differs between apktool smali dumps and dexlib2 dumping, which
+ * is what burned v1.10.0/v1.10.1's middle-of-method locator. Verified pins:
+ * registers v1/v2/v3/v5 are dead at method end, the whole block fits locals.
+ * Verified against 14.41.0 (vc 14418020).
  */
 @Suppress("unused")
 val removePromotedPinsPatch = bytecodePatch(
     name = "Ad-free feed (remove promoted Pins)",
     description = "Filters promoted/sponsored Pins out of every feed, search result, and board " +
-        "list at the deserialization choke point, before they ever render. Organic pinning, " +
-        "boards and saving are unaffected.",
+        "list at the deserialization choke point, so they never render. Organic pinning, boards " +
+        "and saving are unaffected.",
     default = true,
 ) {
     compatibleWith(PINTEREST_COMPATIBILITY)
@@ -41,34 +45,34 @@ val removePromotedPinsPatch = bytecodePatch(
         ).method
 
         method.apply {
-            // Locate the List.add(v0, v4) that appends each parsed pin.
-            // NOTE: dexlib2 toString() renders registers without apktook spacing,
-            // so match on the method signature fragment only (unique here).
-            val addIndex = implementation!!.instructions.indexOfFirst {
-                it.toString().contains("Ljava/util/List;->add(Ljava/lang/Object;)Z")
-            }
-            require(addIndex >= 0) { "PinDeserializer.a(): List.add not found" }
-
-            // Insert the promoted guard immediately before the add.
-            // v4 = pin model, v5 = scratch (only used as a temp in this loop).
+            val instructionCount = implementation!!.instructions.size
             addInstructions(
-                addIndex,
+                instructionCount - 1, // before return-object v0 (v0 = the pin list)
                 """
-                    invoke-virtual { v4 }, Lcom/pinterest/api/model/pe;->Z5()Ljava/lang/Boolean;
+                    # Remove entries whose pin.is_promoted flag is TRUE.
+                    # v0 = List<pin>; v3 = index i; v1 = pin item; v5 = promoted flag.
+                    const/4 v3, 0x0
+                    :halo_filter_loop
+                    invoke-interface { v0 }, Ljava/util/List;->size()I
+                    move-result v2
+                    if-ge v3, v2, :halo_filter_done
+                    invoke-interface { v0, v3 }, Ljava/util/List;->get(I)Ljava/lang/Object;
+                    move-result-object v1
+                    check-cast v1, Lcom/pinterest/api/model/pe;
+                    invoke-virtual { v1 }, Lcom/pinterest/api/model/pe;->Z5()Ljava/lang/Boolean;
                     move-result-object v5
-                    if-eqz v5, :halo_add_pin
+                    if-eqz v5, :halo_filter_next
                     invoke-virtual { v5 }, Ljava/lang/Boolean;->booleanValue()Z
                     move-result v5
-                    if-eqz v5, :halo_skip_pin
-                    :halo_add_pin
+                    if-nez v5, :halo_filter_next
+                    invoke-interface { v0, v3 }, Ljava/util/List;->remove(I)Ljava/lang/Object;
+                    goto :halo_filter_loop
+                    :halo_filter_next
+                    add-int/lit8 v3, v3, 0x1
+                    goto :halo_filter_loop
+                    :halo_filter_done
                 """.trimIndent(),
             )
-
-            // The original List.add shifted right; land the skip label after it.
-            val addIndexNow = implementation!!.instructions.indexOfFirst {
-                it.toString().contains("Ljava/util/List;->add(Ljava/lang/Object;)Z")
-            }
-            addInstructions(addIndexNow + 1, ":halo_skip_pin")
         }
     }
 }
