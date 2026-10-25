@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.10.1](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.10.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;334 patches total
+> **[v1.10.2](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.10.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;334 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -86,7 +86,7 @@ to gradle/gradle@v9.7.0's own wrapper
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Ad-free feed (remove promoted Pins)](#ad-free-feed-remove-promoted-pins) | Filters promoted/sponsored Pins out of every feed, search result, and board list at the deserialization choke point, before they ever render. Organic pinning, boards and saving are unaffected. |  |
+| [Ad-free feed (remove promoted Pins)](#ad-free-feed-remove-promoted-pins) | Filters promoted/sponsored Pins out of every feed, search result, and board list at the deserialization choke point, so they never render. Organic pinning, boards and saving are unaffected. |  |
 | [Block analytics and data collection](#block-analytics-and-data-collection) | Turns Firebase Analytics and AppsFlyer calls into no-ops: no event logging, no install/activation attribution, no collection toggling. Push notifications keep working; Pinterest's own features are untouched. |  |
 | [Enable media downloads](#enable-media-downloads) | Forces the pin-level download eligibility flag so the Download action is available on every Pin (images and videos). |  |
 

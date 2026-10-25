@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/ineednotitle/Halo-patches/compare/v1.10.1...v1.10.2) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* Pinterest ad-free v3 - position-anchored tail filter, no instruction-text search ([6f1d67f](https://github.com/ineednotitle/Halo-patches/commit/6f1d67f0389ee45d46c9b8bafc1e57af35ab4dfb))
+* strip comment lines from injected smali (parser tolerance) ([dd8019d](https://github.com/ineednotitle/Halo-patches/commit/dd8019d618f0f7e3b2a05b59a489598c9f159ad7))
+
 ## [1.10.1](https://github.com/ineednotitle/Halo-patches/compare/v1.10.0...v1.10.1) (2026-10-25)
 
 ### 🐛 Bug Fixes
