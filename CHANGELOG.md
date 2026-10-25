@@ -1,3 +1,9 @@
+## [1.10.5](https://github.com/ineednotitle/Halo-patches/compare/v1.10.4...v1.10.5) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* Pinterest analytics - drop AF start() kill (caused launch crash) ([d7f4f5b](https://github.com/ineednotitle/Halo-patches/commit/d7f4f5bd24b3b27e634f3d8318047260996c7ff6))
+
 ## [1.10.4](https://github.com/ineednotitle/Halo-patches/compare/v1.10.3...v1.10.4) (2026-10-25)
 
 ### 🐛 Bug Fixes
