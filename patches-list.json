@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -347,6 +347,37 @@
                 "ARMEABI_V7A": 22510,
                 "X86_64": 22510,
                 "X86": 22510
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block Firefox telemetry",
+      "description": "Never initializes Glean telemetry, Nimbus experiments, Sentry crash reporting, or Adjust marketing attribution at startup. Browsing, Sync, add-ons and all features keep working.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.mozilla.firefox",
+          "name": "Firefox",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E66000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "158.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 2016191575,
+                "ARMEABI_V7A": 2016191575,
+                "X86_64": 2016191575,
+                "X86": 2016191575
               },
               "isExperimental": false,
               "minSdk": null,
@@ -2227,6 +2258,37 @@
                 "ARMEABI_V7A": 22510,
                 "X86_64": 22510,
                 "X86": 22510
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Improve startup performance",
+      "description": "Skips two launch-time routines whose only job is metrics/experiments upkeep: the 4k-line startup-metrics coroutine (pure telemetry writes, ~64 metric writes per launch) and the forced Nimbus experiment fetch right after first render. Less launch I/O = faster, smoother open/close. Browser features unchanged.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.mozilla.firefox",
+          "name": "Firefox",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E66000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "158.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 2016191575,
+                "ARMEABI_V7A": 2016191575,
+                "X86_64": 2016191575,
+                "X86": 2016191575
               },
               "isExperimental": false,
               "minSdk": null,

@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.7.0](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.7.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;329 patches total
+> **[v1.8.0](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.8.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;331 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -184,6 +184,22 @@ to gradle/gradle@v9.7.0's own wrapper
 | [Unlock Premium](#unlock-premium) | Unlocks Telegram Premium features for the current account. |  |
 | [Use normal paste](#use-normal-paste) | Skips Telegram's Rich HTML paste handler and falls back to the normal paste path. |  |
 | [Voice to music](#voice-to-music) | Plays voice notes in the full music player with seek bar and background playback. |  |
+
+</details>
+
+<details>
+<summary>📦 Firefox&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 158.0.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Block Firefox telemetry](#block-firefox-telemetry) | Never initializes Glean telemetry, Nimbus experiments, Sentry crash reporting, or Adjust marketing attribution at startup. Browsing, Sync, add-ons and all features keep working. |  |
+| [Improve startup performance](#improve-startup-performance) | Skips two launch-time routines whose only job is metrics/experiments upkeep: the 4k-line startup-metrics coroutine (pure telemetry writes, ~64 metric writes per launch) and the forced Nimbus experiment fetch right after first render. Less launch I/O = faster, smoother open/close. Browser features unchanged. |  |
 
 </details>
 

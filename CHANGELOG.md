@@ -1,3 +1,9 @@
+## [1.8.0](https://github.com/ineednotitle/Halo-patches/compare/v1.7.0...v1.8.0) (2026-10-25)
+
+### ✨ New Features
+
+* Firefox patches - Block Firefox telemetry + Improve startup performance (158.0.2) ([55526b7](https://github.com/ineednotitle/Halo-patches/commit/55526b74e0689dd07b7753ef353e2892c9f67a59))
+
 ## [1.7.0](https://github.com/ineednotitle/Halo-patches/compare/v1.6.5...v1.7.0) (2026-10-25)
 
 ### ✨ New Features
