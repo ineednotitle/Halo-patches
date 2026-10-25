@@ -4,35 +4,42 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.template.patches.shared.Constants.PINTEREST_COMPATIBILITY
+import app.template.patches.shared.clearBody
 
 /**
- * Pinterest blends promoted (sponsored) Pins into the home feed, search
- * results, related pins and boards, tagged with the server flag
- * "is_promoted". Every pin list Pinterest shows is assembled in exactly one
- * place: PinDeserializer.a(...) iterates the response array, keeps items of
- * type "pin", parses each into a pin model and returns the list.
+ * Pinterest blends promoted (sponsored) Pins into every list response; every
+ * pin list the app draws passes the deserialization choke
+ * PinDeserializer.a(Ltm0/a;)Ljava/util/List;, which per item checks
+ * type=="pin", parses via f(), and List.add()s the result.
  *
- * This patch appends a self-contained filter loop right before the method's
- * single return: any entry whose is_promoted flag resolves to Boolean.TRUE
- * is removed from the returned list, so promoted pins are never laid out,
- * rendered or clicked anywhere. Pins whose flag is absent (organic content,
- * the common case) pass through. The single-pin closeup path (method f is
- * deliberately not touched, so opening a Pin link directly still works.
+ * Mechanism history (crucial):
+ * - v1.10.0/v1.10.1: instruction-text searches too fragile for dexlib2
+ *   rendering; never matched on-device.
+ * - v1.10.2-v1.10.4: tail-injected a filter loop before return. Patched fine,
+ *   but Morphe's device-side assembler DROPPED the injected label definitions
+ *   and re-bound the injected gotos to the original method's preexisting
+ *   labels by name (:halo_filter_loop -> :goto_0 at method start...), mangling
+ *   control flow -> app crashed when the first feed list was parsed
+ *   (forensically proven on the user's exported patched APK).
  *
- * The insertion anchors ONLY on "the instruction before return" (a fixed
- * position), never on formatting of existing instruction text - register
- * rendering differs between apktool smali dumps and dexlib2 dumping, which
- * is what burned v1.10.0/v1.10.1's middle-of-method locator. Verified pins:
- * registers v1/v2/v3/v5 are dead at method end and each carries exactly one
-type (v1/v5 objects, v2/v3 ints) so no verifier merge conflicts can arise.
- * Verified against 14.41.0 (vc 14418020).
+ * Correct construct therefore: NEVER inject label-bearing text into a method
+ * that already contains labels. Instead clearBody() the whole method (labels
+ * included) and author the method body in full here, with one fused guard:
+ * pins for which Z5() ("is_promoted") resolves to Boolean.TRUE skip the
+ * List.add. Every label in the authored body has a virgin pool; nothing can
+ * alias. Registry/type discipline mirrors the original build exactly
+ * (v0 list, v1 size, v2 false, v3 index, v4 item scratch, v5 flag scratch).
+ *
+ * The consumer entry is the app-wide contract: all feeds invoke
+ * Lqn0/b;->a(Ltm0/a;) (interface impl'd HERE) - see InterestsFeed /
+ * BoardFeed / PinFeed etc. Verified against 14.41.0 (vc 14418020).
  */
 @Suppress("unused")
 val removePromotedPinsPatch = bytecodePatch(
     name = "Ad-free feed (remove promoted Pins)",
-    description = "Filters promoted/sponsored Pins out of every feed, search result, and board " +
-        "list at the deserialization choke point, so they never render. Organic pinning, boards " +
-        "and saving are unaffected.",
+    description = "Removes promoted/sponsored Pins from every feed, search result, and board list " +
+        "during deserialization, so they never render. Organic pinning, boards and saving are " +
+        "unaffected.",
     default = true,
 ) {
     compatibleWith(PINTEREST_COMPATIBILITY)
@@ -45,33 +52,57 @@ val removePromotedPinsPatch = bytecodePatch(
             parameters = listOf("Ltm0/a;"),
         ).method
 
-        method.apply {
-            val instructionCount = implementation!!.instructions.size
-            addInstructions(
-                instructionCount - 1, // before return-object v0 (v0 = the pin list)
-                """
-                    const/4 v3, 0x0
-                    :halo_filter_loop
-                    invoke-interface { v0 }, Ljava/util/List;->size()I
-                    move-result v2
-                    if-ge v3, v2, :halo_filter_done
-                    invoke-interface { v0, v3 }, Ljava/util/List;->get(I)Ljava/lang/Object;
-                    move-result-object v1
-                    check-cast v1, Lcom/pinterest/api/model/pe;
-                    invoke-virtual { v1 }, Lcom/pinterest/api/model/pe;->Z5()Ljava/lang/Boolean;
-                    move-result-object v5
-                    if-eqz v5, :halo_filter_next
-                    invoke-virtual { v5 }, Ljava/lang/Boolean;->booleanValue()Z
-                    move-result v2
-                    if-nez v2, :halo_filter_next
-                    invoke-interface { v0, v3 }, Ljava/util/List;->remove(I)Ljava/lang/Object;
-                    goto :halo_filter_loop
-                    :halo_filter_next
-                    add-int/lit8 v3, v3, 0x1
-                    goto :halo_filter_loop
-                    :halo_filter_done
-                """.trimIndent(),
-            )
-        }
+        // Full-body rewrite: virgin label pool; promoted pins skip the add.
+        method.clearBody()
+        method.addInstructions(
+            0,
+            """
+                invoke-virtual { p1 }, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+                new-instance v0, Ljava/util/ArrayList;
+                invoke-direct { v0 }, Ljava/util/ArrayList;-><init>()V
+                invoke-virtual { p1 }, Ltm0/a;->d()I
+                move-result v1
+                const/4 v2, 0x0
+                move v3, v2
+                :hf_loop
+                if-ge v3, v1, :hf_done
+                invoke-virtual { p1, v3 }, Ltm0/a;->j(I)Ltm0/c;
+                move-result-object v4
+                invoke-virtual { v4 }, Ltm0/c;->e()Z
+                move-result v5
+                if-eqz v5, :hf_type
+                goto :hf_next
+                :hf_type
+                const-string v5, "type"
+                invoke-virtual { v4, v5 }, Ltm0/c;->c(Ljava/lang/String;)Ljava/lang/String;
+                move-result-object v4
+                const-string v5, "pin"
+                invoke-static { v4, v5 }, Lkotlin/jvm/internal/Intrinsics;->e(Ljava/lang/Object;Ljava/lang/Object;)Z
+                move-result v4
+                if-nez v4, :hf_parse
+                goto :hf_next
+                :hf_parse
+                invoke-virtual { p1, v3 }, Ltm0/a;->j(I)Ltm0/c;
+                move-result-object v4
+                invoke-virtual { p0, v4, v2, v2 }, Lcom/pinterest/api/model/deserializer/PinDeserializer;->f(Ltm0/c;ZZ)Lcom/pinterest/api/model/pe;
+                move-result-object v4
+                invoke-virtual { v4 }, Lcom/pinterest/api/model/pe;->Z5()Ljava/lang/Boolean;
+                move-result-object v5
+                if-eqz v5, :hf_add
+                invoke-virtual { v5 }, Ljava/lang/Boolean;->booleanValue()Z
+                move-result v5
+                if-nez v5, :hf_add
+                goto :hf_next
+                :hf_add
+                invoke-interface { v0, v4 }, Ljava/util/List;->add(Ljava/lang/Object;)Z
+                :hf_next
+                add-int/lit8 v3, v3, 0x1
+                goto :hf_loop
+                :hf_done
+                iget-object p0, p0, Lcom/pinterest/api/model/deserializer/PinDeserializer;->c:Lj70/f;
+                invoke-virtual { p0, v0 }, Lj70/f;->a(Ljava/util/List;)V
+                return-object v0
+            """.trimIndent(),
+        )
     }
 }
