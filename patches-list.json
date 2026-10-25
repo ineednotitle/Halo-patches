@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -449,7 +449,7 @@
     },
     {
       "name": "Block analytics and data collection",
-      "description": "Turns Firebase Analytics and AppsFlyer calls into no-ops: no event logging, no install/activation attribution, no collection toggling. Push notifications keep working; Pinterest's own features are untouched.",
+      "description": "No-ops Firebase screen/event tracking and AppsFlyer attribution + event logging (concrete SDK entry points, verified in 14.41.0). Push notifications keep working; Pinterest features are untouched.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

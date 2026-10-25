@@ -1,3 +1,9 @@
+## [1.10.3](https://github.com/ineednotitle/Halo-patches/compare/v1.10.2...v1.10.3) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* Pinterest analytics patch targets verified against real 14.41.0 binaries ([d332b41](https://github.com/ineednotitle/Halo-patches/commit/d332b4182c8c3747d75d08bc14e14f396d40fdf3))
+
 ## [1.10.2](https://github.com/ineednotitle/Halo-patches/compare/v1.10.1...v1.10.2) (2026-10-25)
 
 ### 🐛 Bug Fixes
