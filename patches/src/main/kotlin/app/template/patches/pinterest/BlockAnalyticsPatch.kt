@@ -45,13 +45,11 @@ val blockAnalyticsPatch = bytecodePatch(
             parameters = listOf("Landroid/app/Activity;", "Ljava/lang/String;", "Ljava/lang/String;"),
         ).method.addInstructions(0, "return-void")
 
-        // AppsFlyer concrete engine: attribution start + both event loggers.
-        Fingerprint(
-            definingClass = "Lcom/appsflyer/internal/AFa1tSDK;",
-            name = "start",
-            returnType = "V",
-            parameters = listOf("Landroid/content/Context;"),
-        ).method.addInstructions(0, "return-void")
+        // AppsFlyer concrete engine: both event loggers become no-ops.
+        // NOTE: start(Context) on the concrete engine (AFa1tSDK) is deliberately NOT
+        // no-op'd — device re-tests showed a patched app that kills start() refuses to
+        // open (uninitialized SDK state consumed by Pinterest launch code). Attribution
+        // start still runs, but every in-app event and all Firebase tracking stay dead.
 
         Fingerprint(
             definingClass = "Lcom/appsflyer/internal/AFa1tSDK;",
