@@ -1521,6 +1521,14 @@ val FIREFOX_COMPATIBILITY = Compatibility(
         targets = listOf(AppTarget(version = "158.0.2", versionCode = 2016191575))
     )
 
+val PINTEREST_COMPATIBILITY = Compatibility(
+        name = "Pinterest",
+        packageName = "com.pinterest",
+        apkFileType = ApkFileType.APK,
+        appIconColor = 0xE60023,
+        targets = listOf(AppTarget(version = "14.41.0", versionCode = 14418020))
+    )
+
 val SUBWAYNOW_COMPATIBILITY = Compatibility(
         name = "Subway Now",
         packageName = "io.goodservice.theweekendest",
