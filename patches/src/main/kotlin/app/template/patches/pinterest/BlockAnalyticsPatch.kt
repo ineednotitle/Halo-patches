@@ -6,60 +6,70 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.template.patches.shared.Constants.PINTEREST_COMPATIBILITY
 
 /**
- * Pinterest 14.41.0 bundles two live third-party data-collection stacks:
+ * Pinterest 14.41.0 bundles slim/old variants of two third-party
+ * data-collection stacks, with these EXACT live entry points (all verified
+ * against the real build, vc 14418020):
  *
- * - Firebase Analytics: event logging via FirebaseAnalytics.logEvent(...) and
- *   explicit collection toggling via setAnalyticsCollectionEnabled(...).
- * - AppsFlyer: install/activation attribution + deferred deep-link + in-app
- *   event logging (dev key hard-coded in the app, start() runs on launch).
+ * - Firebase Analytics, legacy scion-shim flavor: the public class only
+ *   exposes setCurrentScreen(Activity, String, String) for app-driven
+ *   tracking (plus getFirebaseInstanceId/or the scion backend getter, both
+ *   used by infra). Returning from setCurrentScreen removes every explicit
+ *   Firebase screen/event logging call upstream of it.
+ * - AppsFlyer: the public facade AppsFlyerLib is ABSTRACT in this build;
+ *   the concrete engine is com.appsflyer.internal.AFa1tSDK. Its start(...)
+ *   launches install/activation attribution and logEvent(...) forwards
+ *   in-app events. Both become no-ops.
  *
- * Rather than chasing Pinterest's obfuscated wrapper classes (renamed every
- * build), this patch neutralizes the public SDK entry points themselves,
- * inside the app's own dex: the SDK methods become no-ops, so wrapper calls
- * still run but nothing is recorded or sent. Returning from void methods can
- * never produce null surprises downstream — the classic, zero-risk tracker
- * kill. Push notifications (Firebase Messaging) and app integrity
- * (Installations) are untouched.
+ * Returning early from void SDK methods can never produce nulls downstream,
+ * so this is the zero-risk tracker kill. Push notifications (Firebase
+ * Messaging) and app identity (Installations) are untouched. Note: Firebase
+ * auto-collection toggling (the manifest switch) is not part of this patch;
+ * the kills above cover everything Pinterest code can explicitly trigger.
  */
 @Suppress("unused")
 val blockAnalyticsPatch = bytecodePatch(
     name = "Block analytics and data collection",
-    description = "Turns Firebase Analytics and AppsFlyer calls into no-ops: no event logging, no " +
-        "install/activation attribution, no collection toggling. Push notifications keep working; " +
-        "Pinterest's own features are untouched.",
+    description = "No-ops Firebase screen/event tracking and AppsFlyer attribution + event logging " +
+        "(concrete SDK entry points, verified in 14.41.0). Push notifications keep working; " +
+        "Pinterest features are untouched.",
     default = true,
 ) {
     compatibleWith(PINTEREST_COMPATIBILITY)
 
     execute {
-        // Firebase Analytics: event ingests and the collection toggle.
+        // Firebase Analytics (legacy shim): the only outbound tracking entry.
         Fingerprint(
             definingClass = "Lcom/google/firebase/analytics/FirebaseAnalytics;",
-            name = "logEvent",
+            name = "setCurrentScreen",
             returnType = "V",
-            parameters = listOf("Ljava/lang/String;", "Landroid/os/Bundle;"),
+            parameters = listOf("Landroid/app/Activity;", "Ljava/lang/String;", "Ljava/lang/String;"),
         ).method.addInstructions(0, "return-void")
 
+        // AppsFlyer concrete engine: attribution start + both event loggers.
         Fingerprint(
-            definingClass = "Lcom/google/firebase/analytics/FirebaseAnalytics;",
-            name = "setAnalyticsCollectionEnabled",
-            returnType = "V",
-            parameters = listOf("Z"),
-        ).method.addInstructions(0, "return-void")
-
-        // AppsFlyer: attribution start and in-app event logging.
-        Fingerprint(
-            definingClass = "Lcom/appsflyer/AppsFlyerLib;",
+            definingClass = "Lcom/appsflyer/internal/AFa1tSDK;",
             name = "start",
             returnType = "V",
             parameters = listOf("Landroid/content/Context;"),
         ).method.addInstructions(0, "return-void")
 
         Fingerprint(
-            definingClass = "Lcom/appsflyer/AppsFlyerLib;",
+            definingClass = "Lcom/appsflyer/internal/AFa1tSDK;",
             name = "logEvent",
             returnType = "V",
             parameters = listOf("Landroid/content/Context;", "Ljava/lang/String;", "Ljava/util/Map;"),
+        ).method.addInstructions(0, "return-void")
+
+        Fingerprint(
+            definingClass = "Lcom/appsflyer/internal/AFa1tSDK;",
+            name = "logEvent",
+            returnType = "V",
+            parameters = listOf(
+                "Landroid/content/Context;",
+                "Ljava/lang/String;",
+                "Ljava/util/Map;",
+                "Lcom/appsflyer/attribution/AppsFlyerRequestListener;",
+            ),
         ).method.addInstructions(0, "return-void")
     }
 }
