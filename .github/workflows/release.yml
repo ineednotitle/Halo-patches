@@ -44,6 +44,38 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      # Workaround: GitHub intermittently answers semantic-release's push of
+      # refs/notes/semantic-release-<tag> with a bare "! [remote rejected]
+      # ... (failed)" AFTER the tag has already landed, which aborts the run
+      # before the GitHub Release is created (this killed v1.8.0; widely
+      # reported: github.com/ai-ecoverse/slicc-browsers/issues/54). There is
+      # no official flag to skip the notes push, so a git shim returns success
+      # for that one push and passes every other git command through.
+      # The notes only record release channels; this repo releases on a single
+      # channel (main), so skipping it loses nothing.
+      # Credit: github.com/ccpu/multi-mind/pull/19
+      - name: Shim git to skip semantic-release notes push
+        run: |
+          mkdir -p "$HOME/git-shim"
+          REAL_GIT="$(command -v git)"
+          cat > "$HOME/git-shim/git" <<'SHIMEOF'
+          #!/usr/bin/env bash
+          if [ "$1" = "push" ]; then
+            for arg in "$@"; do
+              case "$arg" in
+                refs/notes/semantic-release*)
+                  echo "[git-shim] skipping notes push: $arg" >&2
+                  exit 0
+                  ;;
+              esac
+            done
+          fi
+          exec REAL_GIT_BINARY "$@"
+          SHIMEOF
+          sed -i "s|REAL_GIT_BINARY|$REAL_GIT|" "$HOME/git-shim/git"
+          chmod +x "$HOME/git-shim/git"
+          echo "$HOME/git-shim" >> "$GITHUB_PATH"
+
       # Semantic release runs its own Gradle build command.
       # Only dev and main branch will generate a release as specified by .releaserc
       - name: Release
