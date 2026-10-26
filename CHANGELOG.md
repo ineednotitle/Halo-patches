@@ -1,3 +1,10 @@
+## [1.12.4](https://github.com/ineednotitle/Halo-patches/compare/v1.12.3...v1.12.4) (2026-10-26)
+
+### 🐛 Bug Fixes
+
+* **mereframe:** Kotlin raw-string escape - $ must be ${'$'} (compile error) ([a63d094](https://github.com/ineednotitle/Halo-patches/commit/a63d094b938681cf18e488a551f0ae0085f2bd0d))
+* **mereframe:** replay UnnamedApp.a() bootstrap side effects in forced verdict ([3d0f90f](https://github.com/ineednotitle/Halo-patches/commit/3d0f90fa0384fa769d0b2e197cbd3275f744f304))
+
 ## [1.12.3](https://github.com/ineednotitle/Halo-patches/compare/v1.12.2...v1.12.3) (2026-10-26)
 
 ### 🐛 Bug Fixes
