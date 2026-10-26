@@ -1537,6 +1537,14 @@ val CLAUDE_COMPATIBILITY = Compatibility(
         targets = listOf(AppTarget(version = "1.261023.20", versionCode = 26102320))
     )
 
+val MEREFRAME_COMPATIBILITY = Compatibility(
+        name = "Mereframe",
+        packageName = "app.unnamed.rawrecording",
+        apkFileType = ApkFileType.APK,
+        appIconColor = 0x212121,
+        targets = listOf(AppTarget(version = "0.8.4", versionCode = 118))
+    )
+
 val SUBWAYNOW_COMPATIBILITY = Compatibility(
         name = "Subway Now",
         packageName = "io.goodservice.theweekendest",
