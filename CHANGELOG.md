@@ -1,3 +1,9 @@
+## [1.12.2](https://github.com/ineednotitle/Halo-patches/compare/v1.12.1...v1.12.2) (2026-10-26)
+
+### 🐛 Bug Fixes
+
+* **mereframe:** default Unlock Pro OFF - field-reported capture crash when enabled ([6cd68a9](https://github.com/ineednotitle/Halo-patches/commit/6cd68a9cbe8bb0e774c4c4961dc57b4a2a7fd39e))
+
 ## [1.12.1](https://github.com/ineednotitle/Halo-patches/compare/v1.12.0...v1.12.1) (2026-10-26)
 
 ### 🐛 Bug Fixes
