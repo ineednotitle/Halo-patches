@@ -36,9 +36,12 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 val unlockProPatch = bytecodePatch(
     name = "Unlock Pro features",
     description = "Includes every registered feature in the resolved feature set by dropping the " +
-        "ownership check at the entitlement resolver (nv.e). UI surfaces reading it show Pro " +
-        "functionality unlocked. Local client-side effect only.",
-    default = true,
+        "ownership check at the entitlement resolver (nv.e). LOCAL client-side effect only. " +
+        "WARNING (kept off by default): on at least one device (realme/Android 16) enabling the " +
+        "single registered Pro feature crashes capture - the Pro pipeline path is gated by this " +
+        "flag and we cannot verify its safety side. Enable only if you specifically want the Pro " +
+        "toolset; the app works fully (RAW capture incl.) with just 'Allow re-signed installs'.",
+    default = false,
 ) {
     compatibleWith(MEREFRAME_COMPATIBILITY)
 
