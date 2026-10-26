@@ -1,3 +1,9 @@
+## [1.12.1](https://github.com/ineednotitle/Halo-patches/compare/v1.12.0...v1.12.1) (2026-10-26)
+
+### 🐛 Bug Fixes
+
+* Mereframe patch locate logic - opcode-based matching, label-free verdict forcing ([4187ee6](https://github.com/ineednotitle/Halo-patches/commit/4187ee6e2a372b4a540653cd0505b2e4738c2337))
+
 ## [1.12.0](https://github.com/ineednotitle/Halo-patches/compare/v1.11.0...v1.12.0) (2026-10-26)
 
 ### ✨ New Features
