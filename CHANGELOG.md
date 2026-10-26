@@ -1,3 +1,9 @@
+## [1.12.0](https://github.com/ineednotitle/Halo-patches/compare/v1.11.0...v1.12.0) (2026-10-26)
+
+### ✨ New Features
+
+* Mereframe patches (0.8.4) - allow re-signed installs, unlock Pro features ([b1f3f91](https://github.com/ineednotitle/Halo-patches/commit/b1f3f91611a71d3d7a6e460bb9ef76428dfd9a06))
+
 ## [1.11.0](https://github.com/ineednotitle/Halo-patches/compare/v1.10.7...v1.11.0) (2026-10-26)
 
 ### ✨ New Features

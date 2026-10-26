@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-26T09:48:14",
-  "description": "## [1.11.0](https://github.com/ineednotitle/Halo-patches/compare/v1.10.7...v1.11.0) (2026-10-26)\n\n### ✨ New Features\n\n* Claude patch (1.261023.20) - block Sentry telemetry ([ba53845](https://github.com/ineednotitle/Halo-patches/commit/ba53845f2cdc780855b561d21aef5f68fef3c9db))",
-  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.11.0/patches-1.11.0.mpp",
+  "created_at": "2026-10-26T14:11:17",
+  "description": "## [1.12.0](https://github.com/ineednotitle/Halo-patches/compare/v1.11.0...v1.12.0) (2026-10-26)\n\n### ✨ New Features\n\n* Mereframe patches (0.8.4) - allow re-signed installs, unlock Pro features ([b1f3f91](https://github.com/ineednotitle/Halo-patches/commit/b1f3f91611a71d3d7a6e460bb9ef76428dfd9a06))",
+  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.12.0/patches-1.12.0.mpp",
   "signature_download_url": "",
-  "version": "1.11.0"
+  "version": "1.12.0"
 }
