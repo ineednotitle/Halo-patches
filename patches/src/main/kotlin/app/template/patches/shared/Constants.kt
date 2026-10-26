@@ -1529,6 +1529,14 @@ val PINTEREST_COMPATIBILITY = Compatibility(
         targets = listOf(AppTarget(version = "14.41.0", versionCode = 14418020))
     )
 
+val CLAUDE_COMPATIBILITY = Compatibility(
+        name = "Claude",
+        packageName = "com.anthropic.claude",
+        apkFileType = ApkFileType.APK,
+        appIconColor = 0xD97757,
+        targets = listOf(AppTarget(version = "1.261023.20", versionCode = 26102320))
+    )
+
 val SUBWAYNOW_COMPATIBILITY = Compatibility(
         name = "Subway Now",
         packageName = "io.goodservice.theweekendest",
