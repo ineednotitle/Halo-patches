@@ -43,7 +43,14 @@ val allowReSignedInstallPatch = bytecodePatch(
     compatibleWith(MEREFRAME_COMPATIBILITY)
 
     execute {
-        // 1) Startup verdict -> always accepted.
+        // 1) Startup verdict -> always accepted. IMPORTANT: the original body
+        // is also the ONLY writer of the cached verdict Lqm;->b:LWh;.b:Z
+        // (line-35/zero + line-50/one, then read via installation checks and
+        // the LC2 supplier cases used by the component factory and background
+        // license workers). A bare `const/4 v0, 0x1; return v0` left that cache
+        // permanently false - foreground flow believed "legitimate" while every
+        // deeper consumer kept computing "rejected" (field report: crash as
+        // soon as the camera preview spins up). Set the cache too.
         Fingerprint(
             definingClass = "Lapp/unnamed/rawrecording/UnnamedApp;",
             name = "a",
@@ -51,7 +58,15 @@ val allowReSignedInstallPatch = bytecodePatch(
             parameters = emptyList(),
         ).method.apply {
             clearBody()
-            addInstructions(0, "const/4 v0, 0x1\nreturn v0")
+            addInstructions(
+                0,
+                """
+                const/4 v0, 0x1
+                sget-object v1, Lqm;->b:LWh;
+                iput-boolean v0, v1, LWh;->b:Z
+                return v0
+                """,
+            )
         }
 
         // 2 & 3) Component factories: the guard conditional is preceded by
