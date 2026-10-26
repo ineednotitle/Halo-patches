@@ -1,3 +1,9 @@
+## [1.10.7](https://github.com/ineednotitle/Halo-patches/compare/v1.10.6...v1.10.7) (2026-10-26)
+
+### 🐛 Bug Fixes
+
+* Pinterest ad-free - full-body rewrite to defeat on-device label smash ([01b75cb](https://github.com/ineednotitle/Halo-patches/commit/01b75cb6b1ef0f89c449613cb5aefa93938b2bb4))
+
 ## [1.10.6](https://github.com/ineednotitle/Halo-patches/compare/v1.10.5...v1.10.6) (2026-10-25)
 
 ### 🐛 Bug Fixes
