@@ -69,7 +69,7 @@ val allowReSignedInstallPatch = bytecodePatch(
                 iput-boolean v0, v1, LWh;->b:Z
                 new-instance v1, LEb;
                 invoke-direct {v1}, LEb;-><init>()V
-                invoke-virtual {p0, v1}, Landroid/app/Application;->registerActivityLifecycleCallbacks(Landroid/app/Application\$ActivityLifecycleCallbacks;)V
+                invoke-virtual {p0, v1}, Landroid/app/Application;->registerActivityLifecycleCallbacks(Landroid/app/Application${'$'}ActivityLifecycleCallbacks;)V
                 invoke-virtual {p0}, Landroid/content/Context;->getCacheDir()Ljava/io/File;
                 move-result-object v1
                 sput-object v1, LJm;->c:Ljava/io/File;
