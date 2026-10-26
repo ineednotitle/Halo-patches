@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.10.7",
+  "version": "1.11.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -409,6 +409,37 @@
                 "ARMEABI_V7A": 2016191575,
                 "X86_64": 2016191575,
                 "X86": 2016191575
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block Sentry telemetry",
+      "description": "Disables Sentry crash/error/performance telemetry entirely by neutralizing the configurator that writes the DSN - with no DSN set, Sentry self-disables. Fixes nothing to break: the configurator's return is void and unused. Verified against 1.261023.20.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.anthropic.claude",
+          "name": "Claude",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#D97757",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.261023.20",
+              "versionCodes": {
+                "ARM64_V8A": 26102320,
+                "ARMEABI_V7A": 26102320,
+                "X86_64": 26102320,
+                "X86": 26102320
               },
               "isExperimental": false,
               "minSdk": null,

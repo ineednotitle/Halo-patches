@@ -1,3 +1,9 @@
+## [1.11.0](https://github.com/ineednotitle/Halo-patches/compare/v1.10.7...v1.11.0) (2026-10-26)
+
+### ✨ New Features
+
+* Claude patch (1.261023.20) - block Sentry telemetry ([ba53845](https://github.com/ineednotitle/Halo-patches/commit/ba53845f2cdc780855b561d21aef5f68fef3c9db))
+
 ## [1.10.7](https://github.com/ineednotitle/Halo-patches/compare/v1.10.6...v1.10.7) (2026-10-26)
 
 ### 🐛 Bug Fixes
