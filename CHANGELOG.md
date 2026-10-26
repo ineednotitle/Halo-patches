@@ -1,3 +1,9 @@
+## [1.12.3](https://github.com/ineednotitle/Halo-patches/compare/v1.12.2...v1.12.3) (2026-10-26)
+
+### 🐛 Bug Fixes
+
+* **mereframe:** seed the cached install verdict - Wh.b was left false ([466a24a](https://github.com/ineednotitle/Halo-patches/commit/466a24a806c55a8599166c9f3a1d7e9a365c4f80))
+
 ## [1.12.2](https://github.com/ineednotitle/Halo-patches/compare/v1.12.1...v1.12.2) (2026-10-26)
 
 ### 🐛 Bug Fixes

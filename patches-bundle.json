@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-26T15:50:15",
-  "description": "## [1.12.2](https://github.com/ineednotitle/Halo-patches/compare/v1.12.1...v1.12.2) (2026-10-26)\n\n### 🐛 Bug Fixes\n\n* **mereframe:** default Unlock Pro OFF - field-reported capture crash when enabled ([6cd68a9](https://github.com/ineednotitle/Halo-patches/commit/6cd68a9cbe8bb0e774c4c4961dc57b4a2a7fd39e))",
-  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.12.2/patches-1.12.2.mpp",
+  "created_at": "2026-10-26T16:16:15",
+  "description": "## [1.12.3](https://github.com/ineednotitle/Halo-patches/compare/v1.12.2...v1.12.3) (2026-10-26)\n\n### 🐛 Bug Fixes\n\n* **mereframe:** seed the cached install verdict - Wh.b was left false ([466a24a](https://github.com/ineednotitle/Halo-patches/commit/466a24a806c55a8599166c9f3a1d7e9a365c4f80))",
+  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.12.3/patches-1.12.3.mpp",
   "signature_download_url": "",
-  "version": "1.12.2"
+  "version": "1.12.3"
 }

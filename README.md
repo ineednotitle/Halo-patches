@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.12.2](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.12.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;337 patches total
+> **[v1.12.3](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.12.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;337 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
