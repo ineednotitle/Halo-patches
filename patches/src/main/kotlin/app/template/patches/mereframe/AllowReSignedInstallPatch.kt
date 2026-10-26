@@ -6,6 +6,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.template.patches.shared.Constants.MEREFRAME_COMPATIBILITY
 import app.template.patches.shared.clearBody
+import com.android.tools.smali.dexlib2.Opcode
 
 /**
  * Mereframe 0.8.4 (vc 118) contains a self-defense layer: on launch it decides
@@ -17,18 +18,19 @@ import app.template.patches.shared.clearBody
  * our bundle - it neutralizes the three enforcement points:
  *
  * 1. UnnamedApp.a()Z  -> always true (the startup verdict shared by three
- *    gate call sites).
- * 2. InstallationComponentFactory.instantiateActivity: the single
- *    `if-eqz p0, :cond_0` that routes to InstallationProblemActivity is
- *    NOP'd, always falling through into the real reflective instantiation.
- *    (The :cond_0 and catch blocks stay - never reached, never referenced.)
- * 3. InstallationComponentFactory.instantiateService: `if-nez p0, :cond_1`
- *    becomes `goto :cond_1` - always the normal instantiation path; the
- *    RejectedInstallationService dead-branch stays unreferenced.
+ *    gate call sites): full body replaced with `const/4 v0, 0x1; return v0`.
+ * 2. InstallationComponentFactory.instantiateActivity: the rejected branch is
+ *    entered via `if-eqz p0` on the booleanValue verdict; forcing the just-
+ *    produced result register to 1 (const/4 p0, 0x1 in place of the
+ *    move-result) makes the branch never taken - normal reflective
+ *    instantiation always runs, dead rejection code unreferenced.
+ * 3. InstallationComponentFactory.instantiateService: same trick on the
+ *    `if-nez p0` that guards the RejectedInstallationService substitution.
  *
- * No new labels are introduced; both edits are single-instruction rewrites on
- * a build-pinned layout, fail-open via fingerprints. Only the self-protection
- * verdict changes - all the app's normal behaviors and UI stay untouched.
+ * Both edits rewrite existing instructions in place - no labels are
+ * introduced or referenced. Layout is build-pinned (0.8.4/vc 118) and every
+ * precondition is asserted (opcode + register flow), failing loudly rather
+ * than half-patching.
  */
 @Suppress("unused")
 val allowReSignedInstallPatch = bytecodePatch(
@@ -52,32 +54,42 @@ val allowReSignedInstallPatch = bytecodePatch(
             addInstructions(0, "const/4 v0, 0x1\nreturn v0")
         }
 
-        // 2) Activity instantiation: NOP the route-to-InstallationProblem branch.
-        Fingerprint(
-            definingClass = "Lapp/unnamed/rawrecording/InstallationComponentFactory;",
-            name = "instantiateActivity",
-            returnType = "Landroid/app/Activity;",
-            parameters = listOf("Ljava/lang/ClassLoader;", "Ljava/lang/String;", "Landroid/content/Intent;"),
-        ).method.apply {
-            val idx = implementation!!.instructions.indexOfFirst {
-                it.toString().startsWith("if-eqz p0, :cond_0")
+        // 2 & 3) Component factories: the guard conditional is preceded by
+        // `move-result p0` of Ljava/lang/Boolean;->booleanValue()Z on the
+        // supplied verdict. Replacing that move-result with `const/4 p0, 0x1`
+        // forces the verdict to accepted (true) for both polarities
+        // (`if-eqz` in instantiateActivity, `if-nez` in instantiateService).
+        listOf(
+            Triple(
+                "Landroid/app/Activity;" to "instantiateActivity",
+                Opcode.IF_EQZ,
+                0,
+            ),
+            Triple(
+                "Landroid/app/Service;" to "instantiateService",
+                Opcode.IF_NEZ,
+                0,
+            ),
+        ).forEach { (guard, opcode, guardOrdinal) ->
+            val (returnType, name) = guard
+            Fingerprint(
+                definingClass = "Lapp/unnamed/rawrecording/InstallationComponentFactory;",
+                name = name,
+                returnType = returnType,
+                parameters = listOf("Ljava/lang/ClassLoader;", "Ljava/lang/String;", "Landroid/content/Intent;"),
+            ).method.apply {
+                val instructions = implementation!!.instructions
+                val guardIndices = instructions.mapIndexedNotNull { i, ins ->
+                    if (ins.opcode == opcode) i else null
+                }
+                require(guardIndices.isNotEmpty()) { "$name: guard conditional not found" }
+                val ifIdx = guardIndices[guardOrdinal]
+                val moveIdx = ifIdx - 1
+                require(moveIdx >= 0 && instructions.elementAt(moveIdx).opcode == Opcode.MOVE_RESULT) {
+                    "$name: expected move-result before guard, got ${instructions.elementAt(moveIdx)}"
+                }
+                replaceInstruction(moveIdx, "const/4 p0, 0x1")
             }
-            require(idx >= 0) { "instantiateActivity: rejection branch not found" }
-            replaceInstruction(idx, "nop")
-        }
-
-        // 3) Service instantiation: always take the normal path.
-        Fingerprint(
-            definingClass = "Lapp/unnamed/rawrecording/InstallationComponentFactory;",
-            name = "instantiateService",
-            returnType = "Landroid/app/Service;",
-            parameters = listOf("Ljava/lang/ClassLoader;", "Ljava/lang/String;", "Landroid/content/Intent;"),
-        ).method.apply {
-            val idx = implementation!!.instructions.indexOfFirst {
-                it.toString().startsWith("if-nez p0, :cond_1")
-            }
-            require(idx >= 0) { "instantiateService: rejection branch not found" }
-            replaceInstruction(idx, "goto :cond_1")
         }
     }
 }
