@@ -43,14 +43,17 @@ val allowReSignedInstallPatch = bytecodePatch(
     compatibleWith(MEREFRAME_COMPATIBILITY)
 
     execute {
-        // 1) Startup verdict -> always accepted. IMPORTANT: the original body
-        // is also the ONLY writer of the cached verdict Lqm;->b:LWh;.b:Z
-        // (line-35/zero + line-50/one, then read via installation checks and
-        // the LC2 supplier cases used by the component factory and background
-        // license workers). A bare `const/4 v0, 0x1; return v0` left that cache
-        // permanently false - foreground flow believed "legitimate" while every
-        // deeper consumer kept computing "rejected" (field report: crash as
-        // soon as the camera preview spins up). Set the cache too.
+        // 1) Startup verdict -> always accepted, WITH the method's bootstrap
+        // side effects preserved. The stock body does four things our first
+        // replacement accidentally killed: (a) seeds the cached verdict
+        // Lqm;->b:LWh;.b:Z read by factory/license workers via LC2 case 0xb;
+        // (b) registers Eb ActivityLifecycleCallbacks (per-activity session
+        // wiring - skip it and the camera preview init dies mid-launch, the
+        // exact field report); (c) publishes Jm.c = getCacheDir() used by the
+        // 64MB+ RAW frame-buffer allocator (Jm.g); (d) flips UnnamedApp.b as
+        // the "bootstrapped" idempotency flag. We replay all of them, then
+        // return true - the install-legality/licensing adjudication is the
+        // only behavior we suppress.
         Fingerprint(
             definingClass = "Lapp/unnamed/rawrecording/UnnamedApp;",
             name = "a",
@@ -64,6 +67,13 @@ val allowReSignedInstallPatch = bytecodePatch(
                 const/4 v0, 0x1
                 sget-object v1, Lqm;->b:LWh;
                 iput-boolean v0, v1, LWh;->b:Z
+                new-instance v1, LEb;
+                invoke-direct {v1}, LEb;-><init>()V
+                invoke-virtual {p0, v1}, Landroid/app/Application;->registerActivityLifecycleCallbacks(Landroid/app/Application\$ActivityLifecycleCallbacks;)V
+                invoke-virtual {p0}, Landroid/content/Context;->getCacheDir()Ljava/io/File;
+                move-result-object v1
+                sput-object v1, LJm;->c:Ljava/io/File;
+                iput-boolean v0, p0, Lapp/unnamed/rawrecording/UnnamedApp;->b:Z
                 return v0
                 """,
             )
