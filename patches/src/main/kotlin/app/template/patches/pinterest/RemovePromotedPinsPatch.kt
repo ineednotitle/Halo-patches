@@ -1,7 +1,7 @@
 package app.template.patches.pinterest
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.template.patches.shared.Constants.PINTEREST_COMPATIBILITY
 import app.template.patches.shared.clearBody
@@ -54,7 +54,7 @@ val removePromotedPinsPatch = bytecodePatch(
 
         // Full-body rewrite: virgin label pool; promoted pins skip the add.
         method.clearBody()
-        method.addInstructions(
+        method.addInstructionsWithLabels(
             0,
             """
                 invoke-virtual { p1 }, Ljava/lang/Object;->getClass()Ljava/lang/Class;
