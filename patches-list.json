@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.12.4",
+  "version": "1.13.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -1122,6 +1122,37 @@
           }
         }
       ]
+    },
+    {
+      "name": "Diagnostic crash log",
+      "description": "DIAGNOSTIC ONLY - writes the full stack trace to Downloads/mereframe-crash-*.txt when the app crashes, for remote diagnosis. Off by default; enable when asked to produce a crash log. Chain-forwards to the original crash handler.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "app.unnamed.rawrecording",
+          "name": "Mereframe",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#212121",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.4",
+              "versionCodes": {
+                "ARM64_V8A": 118,
+                "ARMEABI_V7A": 118,
+                "X86_64": 118,
+                "X86": 118
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     },
     {
       "name": "Disable Ads",

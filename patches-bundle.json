@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-26T16:49:37",
-  "description": "## [1.12.4](https://github.com/ineednotitle/Halo-patches/compare/v1.12.3...v1.12.4) (2026-10-26)\n\n### 🐛 Bug Fixes\n\n* **mereframe:** Kotlin raw-string escape - $ must be ${'$'} (compile error) ([a63d094](https://github.com/ineednotitle/Halo-patches/commit/a63d094b938681cf18e488a551f0ae0085f2bd0d))\n* **mereframe:** replay UnnamedApp.a() bootstrap side effects in forced verdict ([3d0f90f](https://github.com/ineednotitle/Halo-patches/commit/3d0f90fa0384fa769d0b2e197cbd3275f744f304))",
-  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.12.4/patches-1.12.4.mpp",
+  "created_at": "2026-10-27T10:07:51",
+  "description": "## [1.13.0](https://github.com/ineednotitle/Halo-patches/compare/v1.12.4...v1.13.0) (2026-10-27)\n\n### ✨ New Features\n\n* **mereframe:** diagnostic crash-logger patch (temporary instrumentation, NOT a fix) ([ded4985](https://github.com/ineednotitle/Halo-patches/commit/ded4985ddf22ea87114db21ac24a877e6b7428b7))",
+  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.13.0/patches-1.13.0.mpp",
   "signature_download_url": "",
-  "version": "1.12.4"
+  "version": "1.13.0"
 }

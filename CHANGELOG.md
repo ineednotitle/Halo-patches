@@ -1,3 +1,9 @@
+## [1.13.0](https://github.com/ineednotitle/Halo-patches/compare/v1.12.4...v1.13.0) (2026-10-27)
+
+### ✨ New Features
+
+* **mereframe:** diagnostic crash-logger patch (temporary instrumentation, NOT a fix) ([ded4985](https://github.com/ineednotitle/Halo-patches/commit/ded4985ddf22ea87114db21ac24a877e6b7428b7))
+
 ## [1.12.4](https://github.com/ineednotitle/Halo-patches/compare/v1.12.3...v1.12.4) (2026-10-26)
 
 ### 🐛 Bug Fixes
