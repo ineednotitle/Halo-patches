@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -890,6 +890,37 @@
                 "ARMEABI_V7A": 22510,
                 "X86_64": 22510,
                 "X86": 22510
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass native integrity checks",
+      "description": "libunnamed_raw.so JNI-throws 'app integrity check failed' on re-signed builds, killing camera session start (preview) - observed via diagnostic crash log. This patch catches the throw at the session-opening wrapper and substitutes a valid session result. Required together with 'Allow re-signed/sideloaded installs'.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "app.unnamed.rawrecording",
+          "name": "Mereframe",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#212121",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.4",
+              "versionCodes": {
+                "ARM64_V8A": 118,
+                "ARMEABI_V7A": 118,
+                "X86_64": 118,
+                "X86": 118
               },
               "isExperimental": false,
               "minSdk": null,

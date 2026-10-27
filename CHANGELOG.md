@@ -1,3 +1,9 @@
+## [1.13.1](https://github.com/ineednotitle/Halo-patches/compare/v1.13.0...v1.13.1) (2026-10-27)
+
+### 🐛 Bug Fixes
+
+* **mereframe:** bypass native 'app integrity check failed' at session open ([0d2e607](https://github.com/ineednotitle/Halo-patches/commit/0d2e607d1a2de69c47441eed0805d9543d96a012))
+
 ## [1.13.0](https://github.com/ineednotitle/Halo-patches/compare/v1.12.4...v1.13.0) (2026-10-27)
 
 ### ✨ New Features
