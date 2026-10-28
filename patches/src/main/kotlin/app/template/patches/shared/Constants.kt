@@ -1704,6 +1704,14 @@ val TRANZMATE_COMPATIBILITY = Compatibility(
         targets = listOf(AppTarget(version = "5.197.1.1801", versionCode = 1801))
     )
 
+val TRAKT_COMPATIBILITY = Compatibility(
+        name = "trakt.TV Shows & Movies",
+        packageName = "tv.trakt.trakt",
+        apkFileType = ApkFileType.APK,
+        appIconColor = 0xED1C24,
+        targets = listOf(AppTarget(version = "3.26.1", versionCode = 449))
+    )
+
 val TURBOSCAN_COMPATIBILITY = Compatibility(
         name = "TurboScan",
         packageName = "com.piksoft.turboscan.free",
