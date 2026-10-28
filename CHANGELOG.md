@@ -1,3 +1,9 @@
+## [1.15.0](https://github.com/ineednotitle/Halo-patches/compare/v1.14.0...v1.15.0) (2026-10-28)
+
+### ✨ New Features
+
+* **chatgpt:** add privacy patch removing mic and camera access ([e176707](https://github.com/ineednotitle/Halo-patches/commit/e176707df317f529343c50c1a0f339da37e2718a))
+
 ## [1.14.0](https://github.com/ineednotitle/Halo-patches/compare/v1.13.1...v1.14.0) (2026-10-28)
 
 ### ✨ New Features

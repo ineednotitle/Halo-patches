@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -2880,6 +2880,37 @@
                 "ARMEABI_V7A": 2026152325,
                 "X86_64": 2026152325,
                 "X86": 2026152325
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Privacy: no mic or camera",
+      "description": "Removes RECORD_AUDIO, CAMERA, FOREGROUND_SERVICE_MICROPHONE plus all camera/microphone uses-feature declarations from the manifest. Voice Mode and camera capture become impossible (not merely denied - the grant dialog itself is gone). File storage, notifications and everything else are untouched.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.openai.chatgpt",
+          "name": "ChatGPT",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#10A37F",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.2026.293",
+              "versionCodes": {
+                "ARM64_V8A": 2629319,
+                "ARMEABI_V7A": 2629319,
+                "X86_64": 2629319,
+                "X86": 2629319
               },
               "isExperimental": false,
               "minSdk": null,

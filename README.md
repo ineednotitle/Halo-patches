@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.14.0](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.14.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;340 patches total
+> **[v1.15.0](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.15.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;341 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -458,6 +458,21 @@ to gradle/gradle@v9.7.0's own wrapper
 |----------|----------------|-----------|
 | [Privacy Enhancements](#privacy-enhancements) | Suppresses outbound read receipts and prevents admin quiet-hours policies from overriding your presence status. |  |
 | [Unlock Teams](#unlock-teams) | Unlocks Teams Premium features. |  |
+
+</details>
+
+<details>
+<summary>📦 ChatGPT&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.2026.293 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Privacy: no mic or camera](#privacy-no-mic-or-camera) | Removes RECORD_AUDIO, CAMERA, FOREGROUND_SERVICE_MICROPHONE plus all camera/microphone uses-feature declarations from the manifest. Voice Mode and camera capture become impossible (not merely denied - the grant dialog itself is gone). File storage, notifications and everything else are untouched. |  |
 
 </details>
 
