@@ -37,7 +37,7 @@ to gradle/gradle@v9.7.0's own wrapper
 ## 🧩 Patches
 
 <!-- PATCHES_START -->
-> **[v1.13.1](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.13.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;339 patches total
+> **[v1.14.0](https://github.com/ineednotitle/Halo-patches/releases/tag/v1.14.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;340 patches total
 <details>
 <summary>📦 AAAD&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -3433,6 +3433,21 @@ to gradle/gradle@v9.7.0's own wrapper
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock VIP](#unlock-vip) | Unlock VIP subscription in app. |  |
+
+</details>
+
+<details>
+<summary>📦 trakt.TV Shows & Movies&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.26.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Unlock VIP](#unlock-vip) | Unlocks VIP in trakt.TV Shows & Movies by forcing the parsed User.isVip flag to true (covers no-ads, advanced/saved filters, year-in-review and other local VIP gates). Methods delegating to the primary User constructor are covered automatically. |  |
 
 </details>
 

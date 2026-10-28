@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.13.1",
+  "version": "1.14.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -10203,6 +10203,37 @@
                 "ARMEABI_V7A": 20750012,
                 "X86_64": 20750012,
                 "X86": 20750012
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock VIP",
+      "description": "Unlocks VIP in trakt.TV Shows & Movies by forcing the parsed User.isVip flag to true (covers no-ads, advanced/saved filters, year-in-review and other local VIP gates). Methods delegating to the primary User constructor are covered automatically.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "tv.trakt.trakt",
+          "name": "trakt.TV Shows & Movies",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#ED1C24",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.26.1",
+              "versionCodes": {
+                "ARM64_V8A": 449,
+                "ARMEABI_V7A": 449,
+                "X86_64": 449,
+                "X86": 449
               },
               "isExperimental": false,
               "minSdk": null,

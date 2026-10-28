@@ -1,3 +1,9 @@
+## [1.14.0](https://github.com/ineednotitle/Halo-patches/compare/v1.13.1...v1.14.0) (2026-10-28)
+
+### ✨ New Features
+
+* **trakt:** unlock VIP for trakt.TV Shows & Movies (3.26.1) ([6c211ee](https://github.com/ineednotitle/Halo-patches/commit/6c211ee5ccca7c454d5e9fc71af34f718472c5a0))
+
 ## [1.13.1](https://github.com/ineednotitle/Halo-patches/compare/v1.13.0...v1.13.1) (2026-10-27)
 
 ### 🐛 Bug Fixes
