@@ -434,6 +434,14 @@ val CHARGEMETER_COMPATIBILITY = Compatibility(
         targets = listOf(AppTarget(version = "3.0.1", versionCode = 81))
     )
 
+val CHATGPT_COMPATIBILITY = Compatibility(
+        name = "ChatGPT",
+        packageName = "com.openai.chatgpt",
+        apkFileType = ApkFileType.APK,
+        appIconColor = 0x10A37F,
+        targets = listOf(AppTarget(version = "1.2026.293", versionCode = 2629319))
+    )
+
 val CITIZEN_COMPATIBILITY = Compatibility(
         name = "Citizen",
         packageName = "sp0n.citizen",
