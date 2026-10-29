@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-29T10:18:51",
-  "description": "## [1.16.0](https://github.com/ineednotitle/Halo-patches/compare/v1.15.0...v1.16.0) (2026-10-29)\n\n### ✨ New Features\n\n* **chatgpt:** block tracker and analytics reporting ([c6974e5](https://github.com/ineednotitle/Halo-patches/commit/c6974e5329c47f181534b6a91bf2e4cc2b28addc))",
-  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.16.0/patches-1.16.0.mpp",
+  "created_at": "2026-10-29T10:57:31",
+  "description": "## [1.17.0](https://github.com/ineednotitle/Halo-patches/compare/v1.16.0...v1.17.0) (2026-10-29)\n\n### ✨ New Features\n\n* **chatgpt:** strip location contacts and phone data permissions ([168cad1](https://github.com/ineednotitle/Halo-patches/commit/168cad1315e6843e4b631640afd80fca935f614b))",
+  "download_url": "https://github.com/ineednotitle/Halo-patches/releases/download/v1.17.0/patches-1.17.0.mpp",
   "signature_download_url": "",
-  "version": "1.16.0"
+  "version": "1.17.0"
 }

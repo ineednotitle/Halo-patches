@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "patches": [
     {
       "name": "AAAD Premium",
@@ -2897,6 +2897,37 @@
       "dependencies": [
         "ResourcePatch"
       ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.openai.chatgpt",
+          "name": "ChatGPT",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#10A37F",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.2026.293",
+              "versionCodes": {
+                "ARM64_V8A": 2629319,
+                "ARMEABI_V7A": 2629319,
+                "X86_64": 2629319,
+                "X86": 2629319
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Privacy: no location, contacts or phone data",
+      "description": "Removes ChatGPT's location, contacts, phone-state and SMS-send permissions. Location-based answers, contact lookup, phone-state access and direct SMS sending are disabled. Call/voice-assistant framework permissions, chat, files and push notifications are preserved.",
+      "default": true,
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.openai.chatgpt",

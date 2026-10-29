@@ -1,3 +1,9 @@
+## [1.17.0](https://github.com/ineednotitle/Halo-patches/compare/v1.16.0...v1.17.0) (2026-10-29)
+
+### ✨ New Features
+
+* **chatgpt:** strip location contacts and phone data permissions ([168cad1](https://github.com/ineednotitle/Halo-patches/commit/168cad1315e6843e4b631640afd80fca935f614b))
+
 ## [1.16.0](https://github.com/ineednotitle/Halo-patches/compare/v1.15.0...v1.16.0) (2026-10-29)
 
 ### ✨ New Features
