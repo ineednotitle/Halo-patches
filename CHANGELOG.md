@@ -1,3 +1,9 @@
+## [1.16.0](https://github.com/ineednotitle/Halo-patches/compare/v1.15.0...v1.16.0) (2026-10-29)
+
+### ✨ New Features
+
+* **chatgpt:** block tracker and analytics reporting ([c6974e5](https://github.com/ineednotitle/Halo-patches/commit/c6974e5329c47f181534b6a91bf2e4cc2b28addc))
+
 ## [1.15.0](https://github.com/ineednotitle/Halo-patches/compare/v1.14.0...v1.15.0) (2026-10-28)
 
 ### ✨ New Features
